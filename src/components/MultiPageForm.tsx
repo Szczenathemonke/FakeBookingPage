@@ -1,5 +1,6 @@
 import { Formik, FormikProps, Form } from "formik";
 import { createContext, useRef, useState } from "react";
+import { z } from "zod";
 import FormFirstStep from "./FormFirstStep";
 import FormSecondStep from "./FormSecondStep";
 import FormSummary from "./FormSummary";
@@ -9,11 +10,17 @@ import InputComponent from "./InputComponent";
 export type Values = {
   firstName: string;
   lastName: string;
-  phone: number | string;
+  phone: number;
   email: string;
-  birth: number | string;
+  birth: number;
 };
-
+const zodValidation = z.object({
+  firstName: z.string({ message: "Required Field!" }).max(15).min(1),
+  lastName: z.string(),
+  phone: z.number(),
+  email: z.string().min(1).email({ message: "Invalid email address" }),
+  birth: z.date(),
+});
 const MultiPageForm = () => {
   // const formValues = useRef();
   const [page, setPage] = useState(0);
@@ -43,6 +50,7 @@ const MultiPageForm = () => {
             email: "",
             birth: "",
           }}
+          validationSchema={zodValidation}
           onSubmit={(values) => {
             // formValues.current(JSON.stringify(values))
             alert(JSON.stringify(values));
