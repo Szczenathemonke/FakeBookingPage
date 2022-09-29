@@ -1,24 +1,31 @@
 import { Formik, FormikProps, Form } from "formik";
-import { useContext } from "react";
+import { createContext, useContext } from "react";
 import InputComponent from "./InputComponent";
 export type Values = {
   firstName: string;
   lastName: string;
-  phone: number;
+  phone: number | string;
   email: string;
-  birth: number;
+  birth: number | string;
 };
 
 const FormFirstStep = () => {
-  const formStep = createContext();
+  const formStep = createContext(null);
   return (
     <Formik
-      initialValues={{ firstName: "" }}
+      initialValues={{
+        firstName: "",
+        lastName: "",
+        phone: "",
+        email: "",
+        birth: "",
+      }}
       onSubmit={(values) => alert(JSON.stringify(values))}
     >
-      {(props: FormikProps<Values>) => (
+      {(props) => (
         <Form onSubmit={props.handleSubmit}>
           <InputComponent name="firstName" type="text" label="First name" />
+          <InputComponent name="lastName" type="text" label="Last name" />
           <button type="submit">Submit</button>
         </Form>
       )}
