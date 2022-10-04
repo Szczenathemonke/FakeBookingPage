@@ -1,5 +1,9 @@
+import { z } from "zod";
 import InputComponent from "./InputComponent";
 
+const zodValidation = z.object({
+  firstName: z.string({ required_error: "Required Field!" }).max(15).min(1),
+});
 const FormFirstStep = () => {
   return (
     <>

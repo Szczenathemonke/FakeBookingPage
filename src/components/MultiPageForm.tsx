@@ -1,5 +1,6 @@
 import { Formik, FormikProps, Form } from "formik";
-import { createContext, useRef, useState } from "react";
+import { useState } from "react";
+import { date } from "yup";
 import { z } from "zod";
 import { toFormikValidationSchema } from "zod-formik-adapter";
 import FormFirstStep from "./FormFirstStep";
@@ -12,18 +13,20 @@ export type Values = {
   lastName: string;
   phone: number;
   email: string;
-  birth: number;
+  birth: string;
 };
-const zodValidation = z.object({
-  firstName: z.string({ required_error: "Required Field!" }).max(15).min(1),
-  lastName: z.string({ required_error: "Required Field!" }).max(15).min(1),
-  phone: z.number({ required_error: "Required Field!" }),
-  email: z
-    .string({ required_error: "Required Field!" })
-    .min(1)
-    .email({ message: "Invalid email address" }),
-  birth: z.date({ required_error: "Required Field!" }),
-});
+
+// form level validation poniżej -> problem z walidacją podczas przechodzenia przyciskami -> przyciski działają cały czas
+// const zodValidation = z.object({
+//   firstName: z.string({ required_error: "Required Field!" }).max(15).min(1),
+//   lastName: z.string({ required_error: "Required Field!" }).max(15).min(1),
+//   phone: z.number({ required_error: "Required Field!" }),
+//   email: z
+//     .string({ required_error: "Required Field!" })
+//     .min(1)
+//     .email({ message: "Invalid email address" }),
+//   birth: z.string({ required_error: "Required Field!" }),
+// });
 const MultiPageForm = () => {
   // const formValues = useRef();
   const [page, setPage] = useState(0);
@@ -51,11 +54,10 @@ const MultiPageForm = () => {
             lastName: "",
             phone: 0,
             email: "",
-            birth: 0,
+            birth: "",
           }}
-          validationSchema={toFormikValidationSchema(zodValidation)}
+          // validationSchema={toFormikValidationSchema(zodValidation)}
           onSubmit={(values) => {
-            // formValues.current(JSON.stringify(values))
             console.log(JSON.stringify(values));
             alert(JSON.stringify(values));
           }}
@@ -80,6 +82,7 @@ const MultiPageForm = () => {
                 <div>
                   {page < 3 && (
                     <button
+                      disabled={!formProps.isValid}
                       type="button"
                       className="btn btn-primary"
                       onClick={() => setPage((old) => old + 1)}

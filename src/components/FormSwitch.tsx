@@ -3,14 +3,10 @@ import FormSecondStep from "./FormSecondStep";
 import FormSummary from "./FormSummary";
 import FormThirdStep from "./FormThirdStep";
 
-type SwitchProps = {
-  step: number;
-};
-
-const FormSwitch = (step, formProps) => {
+const FormSwitch = (step: number) => {
   switch (step) {
     case 0:
-      return <FormFirstStep formProps={formProps} />;
+      return <FormFirstStep />;
     case 1:
       return <FormSecondStep />;
     case 2:

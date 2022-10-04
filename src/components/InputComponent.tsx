@@ -1,12 +1,12 @@
-import { FieldConfig, useField } from "formik";
-import { ReactComponentElement } from "react";
-import { Values } from "./MultiPageForm";
+import { useField } from "formik";
 
-interface Props extends FieldConfig, Values {
+type InputProps = {
   label: string;
-}
+  name: string;
+  type: string;
+};
 
-const InputComponent = ({ label, ...props }: Props) => {
+const InputComponent = ({ label, ...props }: InputProps) => {
   const [field, meta] = useField(props);
   return (
     <>
