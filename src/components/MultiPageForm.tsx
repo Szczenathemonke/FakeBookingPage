@@ -1,12 +1,12 @@
 import { Formik, FormikProps, Form } from "formik";
 import { createContext, useRef, useState } from "react";
 import { z } from "zod";
+import { toFormikValidationSchema } from "zod-formik-adapter";
 import FormFirstStep from "./FormFirstStep";
 import FormSecondStep from "./FormSecondStep";
 import FormSummary from "./FormSummary";
-import FormSwitch from "./FormSwitch";
 import FormThirdStep from "./FormThirdStep";
-import InputComponent from "./InputComponent";
+
 export type Values = {
   firstName: string;
   lastName: string;
@@ -15,11 +15,14 @@ export type Values = {
   birth: number;
 };
 const zodValidation = z.object({
-  firstName: z.string({ message: "Required Field!" }).max(15).min(1),
-  lastName: z.string(),
-  phone: z.number(),
-  email: z.string().min(1).email({ message: "Invalid email address" }),
-  birth: z.date(),
+  firstName: z.string({ required_error: "Required Field!" }).max(15).min(1),
+  lastName: z.string({ required_error: "Required Field!" }).max(15).min(1),
+  phone: z.number({ required_error: "Required Field!" }),
+  email: z
+    .string({ required_error: "Required Field!" })
+    .min(1)
+    .email({ message: "Invalid email address" }),
+  birth: z.date({ required_error: "Required Field!" }),
 });
 const MultiPageForm = () => {
   // const formValues = useRef();
@@ -46,17 +49,18 @@ const MultiPageForm = () => {
           initialValues={{
             firstName: "",
             lastName: "",
-            phone: "",
+            phone: 0,
             email: "",
-            birth: "",
+            birth: 0,
           }}
-          validationSchema={zodValidation}
+          validationSchema={toFormikValidationSchema(zodValidation)}
           onSubmit={(values) => {
             // formValues.current(JSON.stringify(values))
+            console.log(JSON.stringify(values));
             alert(JSON.stringify(values));
           }}
         >
-          {(formProps) => (
+          {(formProps: FormikProps<Values>) => (
             <Form onSubmit={formProps.handleSubmit}>
               {formSwitch(page)}
 
