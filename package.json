@@ -9,9 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.10.3",
     "daisyui": "^2.31.0",
     "formik": "^2.2.9",
     "react": "^18.2.0",
+    "react-datepicker": "^4.8.0",
     "react-dom": "^18.2.0",
     "yup": "^0.32.11",
     "zod": "^3.19.1",
@@ -19,6 +21,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
+    "@types/react-datepicker": "^4.4.2",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
     "autoprefixer": "^10.4.12",

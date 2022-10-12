@@ -4,6 +4,7 @@ type InputProps = {
   label: string;
   name: string;
   type: string;
+  min?: string;
 };
 
 const InputComponent = ({ label, ...props }: InputProps) => {
