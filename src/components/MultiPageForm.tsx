@@ -8,8 +8,7 @@ import FormSummary from "./FormSummary";
 import FormThirdStep from "./FormThirdStep";
 
 export type Values = {
-  checkIn: string;
-  checkOut: string;
+  reservation: { roomId: string; checkIn: string; checkOut: string }[];
 
   firstName: string;
   lastName: string;
@@ -42,7 +41,6 @@ const zodValidationStep2 = z.object({
 const zodValidationStep3 = z.object({});
 
 const MultiPageForm = () => {
-  // const formValues = useRef();
   const [page, setPage] = useState(0);
 
   const formSwitch = (page: number) => {
@@ -59,15 +57,7 @@ const MultiPageForm = () => {
         return <FormFirstStep />;
     }
   };
-  // const whichValidation = () => {
-  //   if (page === 0) {
-  //     toFormikValidationSchema(zodValidationStep1);
-  //   } else if (page === 1) {
-  //     toFormikValidationSchema(zodValidationStep2);
-  //   } else if (page === 2) {
-  //     toFormikValidationSchema(zodValidationStep3);
-  //   }
-  // };
+
   const formSwitchValidation = (page: number) => {
     switch (page) {
       case 0:
@@ -88,8 +78,7 @@ const MultiPageForm = () => {
       <div className="flex flex-row justify-between">
         <Formik
           initialValues={{
-            checkIn: "",
-            checkOut: "",
+            reservation: [{ roomId: "", checkIn: "", checkOut: "" }],
 
             firstName: "",
             lastName: "",
@@ -107,9 +96,11 @@ const MultiPageForm = () => {
           }}
         >
           {(formProps: FormikProps<Values>) => (
-            <Form onSubmit={formProps.handleSubmit}>
-              {formSwitch(page)}
-
+            <Form
+              onSubmit={formProps.handleSubmit}
+              className="flex flex-col gap-4"
+            >
+              <div>{formSwitch(page)}</div>
               <div className="flex flex-row justify-between">
                 <div>
                   {page > 0 && (

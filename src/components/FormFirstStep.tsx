@@ -7,14 +7,14 @@ import DatePickerComponent from "./DatePickerComponent";
 const FormFirstStep = () => {
   return (
     <>
-      <DatePickerComponent name="checkIn" type="date" label="check-in" />
-      <DatePickerComponent name="checkOut" type="date" label="check-out" />
+      <DatePickerComponent name="checkIn" type="date" />
+      {/* <DatePickerComponent name="checkOut" type="date" label="check-out" /> */}
     </>
   );
 };
 
 export default FormFirstStep;
-
+// napisać tutaj mapowanie dla kazdego pokoju stworzyć datePickerComponent
 {
   /* <>
       <InputComponent
