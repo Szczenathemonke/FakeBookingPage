@@ -1,16 +1,22 @@
 import "./App.css";
+import FinalizeReservation from "./components/FinalizeReservation";
+import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
+import BookingHomepage from "./components/BookingHomepage";
+import RoomList from "./components/RoomList";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import MultiPageForm from "./components/MultiPageForm";
-
+const queryClient = new QueryClient();
 function App() {
   return (
-    <div className="container  m-h-screen">
-      <div className="flex flex-col m-10">
-        <div className="flex flex-row justify-center">
-          <MultiPageForm />
-        </div>
-      </div>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<BookingHomepage />} />
+          <Route path="finalize" element={<FinalizeReservation />} />
+          <Route path="roomList" element={<RoomList />} />
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

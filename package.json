@@ -9,12 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tanstack/react-query": "^4.10.3",
+    "@tanstack/react-query": "^4.12.0",
     "daisyui": "^2.31.0",
     "formik": "^2.2.9",
     "react": "^18.2.0",
     "react-datepicker": "^4.8.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.2",
     "yup": "^0.32.11",
     "zod": "^3.19.1",
     "zod-formik-adapter": "^1.1.1"
