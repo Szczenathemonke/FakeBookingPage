@@ -2,8 +2,9 @@ import "./App.css";
 import FinalizeReservation from "./components/FinalizeReservation";
 import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
 import BookingHomepage from "./components/BookingHomepage";
-import RoomList from "./components/RoomList";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import RoomList from "./components/RoomList";
 
 const queryClient = new QueryClient();
 function App() {
