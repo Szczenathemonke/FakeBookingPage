@@ -1,7 +1,7 @@
 import { useField } from "formik";
 
 type InputProps = {
-  label: string;
+  label?: string;
   name: string;
   type: string;
   min?: string;
@@ -20,7 +20,7 @@ const InputComponent = ({ label, ...props }: InputProps) => {
         />
       </label>
       {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
+        <div className="error font-bold">{meta.error}</div>
       ) : null}
     </>
   );
