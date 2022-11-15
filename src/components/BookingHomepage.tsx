@@ -11,8 +11,8 @@ import MovingBg from "./MovingBg";
 function BookingHomepage() {
   return (
     <div className="h-screen max-h-full">
-      <header className="h-[170px] bg-emerald-500">TUTAJ BĘDZIE HEADER</header>
-      <div className="h-[918px] bg-emerald-100">
+      <header className="h-[100px] bg-emerald-500">TUTAJ BĘDZIE HEADER</header>
+      <div className="h-[450px] bg-emerald-100">
         <div
           className="hero min-h-full bg-hero-pattern"
           style={{
@@ -97,7 +97,7 @@ function BookingHomepage() {
         </div>
       </div>
 
-      <footer className="h-[320px] bg-emerald-200">tutaj będzie footer</footer>
+      <footer className="h-[100px] bg-emerald-200">tutaj będzie footer</footer>
     </div>
   );
 }
