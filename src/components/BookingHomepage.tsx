@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import InputComponent from "./InputComponent";
 import MovingCarousel from "./MovingCarousel";
 import MovingBg from "./MovingBg";
+import RoomList from "./RoomList";
 
 function BookingHomepage() {
   return (
@@ -52,14 +53,15 @@ function BookingHomepage() {
           </div>
         </div>
         <div className="flex flex-col  items-center">
+          <RoomList />
+          {/* <RoomCard />
           <RoomCard />
           <RoomCard />
           <RoomCard />
           <RoomCard />
           <RoomCard />
           <RoomCard />
-          <RoomCard />
-          <RoomCard />
+          <RoomCard /> */}
         </div>
         <div>Pagination</div>
       </section>

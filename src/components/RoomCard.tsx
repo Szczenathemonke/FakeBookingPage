@@ -1,4 +1,4 @@
-function RoomCard() {
+function RoomCard(roomName: string) {
   return (
     <div className="card md:card-side max-w-screen-lg m-10 bg-base-100 shadow-xl">
       <figure>
@@ -9,7 +9,7 @@ function RoomCard() {
         />
       </figure>
       <div className="card-body ">
-        <h2 className="card-title ">New movie is released!</h2>
+        <h2 className="card-title ">{roomName}</h2>
         <p>Click the button to watch on Jetflix app.</p>
         <div className="card-actions justify-end">
           <button className="btn btn-primary">Watch</button>
