@@ -1,4 +1,11 @@
-function RoomCard(roomName: string) {
+import { Room } from "./RoomList";
+
+function RoomCard(props: {
+  name: string;
+  price: number;
+  beds: number;
+  pets: boolean;
+}) {
   return (
     <div className="card md:card-side max-w-screen-lg m-10 bg-base-100 shadow-xl">
       <figure>
@@ -9,8 +16,19 @@ function RoomCard(roomName: string) {
         />
       </figure>
       <div className="card-body ">
-        <h2 className="card-title ">{roomName}</h2>
-        <p>Click the button to watch on Jetflix app.</p>
+        <h2 className="card-title ">{props.name}</h2>
+
+        <div>
+          <div>{props.pets ? "przyjazne dla zwierząt" : "tylko dla ludzi"}</div>
+          <div>
+            {/* {detals.id} */}
+            {props.beds}
+            {/* {detals.hotel.id}
+            {detals.hotel.name} */}
+          </div>
+          <div>Cena pokoju: {props.price}</div>
+          <div>Cena pokoju: {props.price}</div>
+        </div>
         <div className="card-actions justify-end">
           <button className="btn btn-primary">Watch</button>
         </div>
