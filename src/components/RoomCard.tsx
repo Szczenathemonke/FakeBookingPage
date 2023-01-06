@@ -7,7 +7,7 @@ function RoomCard(props: {
   pets: boolean;
 }) {
   return (
-    <div className="card md:card-side max-w-screen-lg m-10 bg-base-100 shadow-xl">
+    <div className="card md:card-side md:w-[800px] m-10 bg-base-100 shadow-xl">
       <figure>
         <img
           className="w-96 max-w-sm"
@@ -20,12 +20,7 @@ function RoomCard(props: {
 
         <div>
           <div>{props.pets ? "przyjazne dla zwierząt" : "tylko dla ludzi"}</div>
-          <div>
-            {/* {detals.id} */}
-            {props.beds}
-            {/* {detals.hotel.id}
-            {detals.hotel.name} */}
-          </div>
+          <div>{props.beds}</div>
           <div>Cena pokoju: {props.price}</div>
           <div>Cena pokoju: {props.price}</div>
         </div>
