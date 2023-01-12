@@ -10,6 +10,8 @@ import MovingBg from "./MovingBg";
 import RoomList from "./RoomList";
 
 function BookingHomepage() {
+  const rooms = { room1: "potega", room2: "remont" };
+
   return (
     <div className="h-screen max-h-full">
       <header className="h-[100px] bg-emerald-500">TUTAJ BĘDZIE HEADER</header>
@@ -42,6 +44,7 @@ function BookingHomepage() {
         <div>
           <div>
             <Link to="/finalize">koszyk</Link>
+            <button></button>
           </div>
           <div>
             <Link to="/roomList">lista pokoi</Link>
@@ -49,14 +52,6 @@ function BookingHomepage() {
         </div>
         <div className="flex flex-col  items-center">
           <RoomList />
-          {/* <RoomCard />
-          <RoomCard />
-          <RoomCard />
-          <RoomCard />
-          <RoomCard />
-          <RoomCard />
-          <RoomCard />
-          <RoomCard /> */}
         </div>
         <div>Pagination</div>
       </section>

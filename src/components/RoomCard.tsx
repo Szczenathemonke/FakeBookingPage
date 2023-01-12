@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { Room } from "./RoomList";
 
 function RoomCard(props: {
