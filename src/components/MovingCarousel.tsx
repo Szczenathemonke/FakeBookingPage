@@ -9,9 +9,6 @@ function MovingCarousel() {
   return (
     <>
       <div className="overflow-hidden">
-        <div className="hero h-[200px] carouselPlaces ">
-          <div className="hero-overlay bg-opacity-70">.</div>
-        </div>
         <div
           className={`h-[200px] flex justify-between items-center bg-transparent`}
         >
