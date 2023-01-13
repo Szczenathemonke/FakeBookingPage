@@ -2,10 +2,10 @@ import { Formik, FormikProps, Form } from "formik";
 import { useState } from "react";
 import { z } from "zod";
 import { toFormikValidationSchema } from "zod-formik-adapter";
-import FormFirstStep from "./FormFirstStep";
-import FormSecondStep from "./FormSecondStep";
-import FormSummary from "./FormSummary";
-import FormThirdStep from "./FormThirdStep";
+import FormFirstStep from "./form/FormFirstStep";
+import FormSecondStep from "./form/FormSecondStep";
+import FormSummary from "./form/FormSummary";
+import FormThirdStep from "./form/FormThirdStep";
 
 export type Values = {
   reservation: { roomId: string; checkIn: string; checkOut: string }[];

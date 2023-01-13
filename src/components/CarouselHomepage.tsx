@@ -1,13 +1,8 @@
-type CarouselProps = {
-  statTitle: string;
-  stat: string;
-  statDescription: string;
-  moveTextTo?: string;
-};
+import React from "react";
 
-function MovingCarousel() {
+function CarouselHomepage() {
   return (
-    <>
+    <div className="bg-emerald-500 ">
       <div className="overflow-hidden">
         <div
           className={`h-[200px] flex justify-between items-center bg-transparent`}
@@ -40,27 +35,8 @@ function MovingCarousel() {
           <div className="hero-overlay bg-opacity-70">.</div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
-export default MovingCarousel;
-//
-//
-//
-//
-// statTitle="Visit one among"
-//           stat="2,137 places"
-//           statDescription="from all around the world"
-//           moveTextTo="start"
-//         />
-//         {/* <MovingCarousel
-//           statTitle="choose your standards from over"
-//           stat="69,000 hotels"
-//           statDescription="in best prices available"
-//         />
-//         <MovingCarousel
-//           statTitle="Join our community of"
-//           stat="1,000,000 customers"
-//           statDescription="and share your experience with us !"
-//           moveTextTo="end"
+export default CarouselHomepage;

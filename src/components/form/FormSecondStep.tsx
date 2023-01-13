@@ -1,4 +1,4 @@
-import InputComponent from "./InputComponent";
+import InputComponent from "../features/InputComponent";
 
 const FormSecondStep = () => {
   return (

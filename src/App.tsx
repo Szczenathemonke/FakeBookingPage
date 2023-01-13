@@ -1,10 +1,10 @@
 import "./App.css";
-import FinalizeReservation from "./components/FinalizeReservation";
+import FinalizeReservation from "./components/pages/FinalizeReservation";
 import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
-import BookingHomepage from "./components/BookingHomepage";
+import BookingHomepage from "./components/pages/BookingHomepage";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import RoomList from "./components/RoomList";
+import RoomList from "./components/features/RoomList";
 
 const queryClient = new QueryClient();
 

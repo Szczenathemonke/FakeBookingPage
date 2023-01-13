@@ -1,4 +1,4 @@
-import MultiPageForm from "./MultiPageForm";
+import MultiPageForm from "../MultiPageForm";
 
 function FinalizeReservation() {
   return (

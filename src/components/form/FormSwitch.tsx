@@ -1,4 +1,4 @@
-import FormFirstStep from "./MultiPageForm";
+import FormFirstStep from "../MultiPageForm";
 import FormSecondStep from "./FormSecondStep";
 import FormSummary from "./FormSummary";
 import FormThirdStep from "./FormThirdStep";
