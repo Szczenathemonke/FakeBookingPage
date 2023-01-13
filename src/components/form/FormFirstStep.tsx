@@ -1,8 +1,5 @@
-import { useState } from "react";
-import InputComponent from "../features/InputComponent";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import DatePickerComponent from "../DatePickerComponent";
+import DatePickerComponent from "../features/DatePickerComponent";
 
 const FormFirstStep = () => {
   return (

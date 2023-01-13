@@ -1,6 +1,4 @@
-import "../customStyle.css";
-
-import HeaderHomepage from "../headerHomepage";
+import HeaderHomepage from "../HeaderHomepage";
 import HeroHomepage from "../HeroHomepage";
 import CarouselHomepage from "../CarouselHomepage";
 import RoomsHomepage from "../RoomsHomepage";

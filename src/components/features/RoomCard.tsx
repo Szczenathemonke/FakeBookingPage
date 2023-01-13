@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Room } from "./RoomList";
+import { roomImg, petsIco } from "../roomData";
 
 function RoomCard(props: {
   name: string;
@@ -12,21 +13,35 @@ function RoomCard(props: {
       <figure>
         <img
           className="w-96 max-w-sm"
-          src="https://www.inventio.info.pl/41906/szezlong-diva-196cm-aksamitny-zielony-40602.jpg"
+          src={roomImg.find((x) => x.name === props.name)?.src}
           alt="roomImg"
         />
       </figure>
       <div className="card-body ">
         <h2 className="card-title ">{props.name}</h2>
+        <p>{roomImg.find((x) => x.name === props.name)?.description}</p>
 
-        <div>
-          <div>{props.pets ? "przyjazne dla zwierząt" : "tylko dla ludzi"}</div>
-          <div>{props.beds}</div>
-          <div>Cena pokoju: {props.price}</div>
-          <div>Cena pokoju: {props.price}</div>
+        <div className="flex row justify-between">
+          <div>
+            {props.pets ? (
+              <img src={petsIco.yes} alt="przyjazne dla zwierząt" width={50} />
+            ) : (
+              <img src={petsIco.no} alt="tylko dla ludzi" width={50} />
+            )}
+          </div>
+          <div>
+            <div className="flex col justify-between">
+              <span>Liczba łóżek:</span>
+              <div> {props.beds}</div>
+            </div>
+            <div className="flex col justify-between gap-2">
+              <span>Cena pokoju:</span>
+              <div> {props.price / 100}$/ noc</div>
+            </div>
+          </div>
         </div>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Watch</button>
+          <button className="btn btn-primary">Zarezerwuj</button>
         </div>
       </div>
     </div>
