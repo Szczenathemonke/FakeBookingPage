@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, PropsWithChildren, useContext, useState } from "react";
 import { roomImg } from "../roomData";
 
 type ContextType = {
@@ -17,13 +17,8 @@ export const CartContext = createContext<ContextType | null>({
   removeFromCart: () => {},
 });
 
-function CartProvider({ children }) {
-  const [cartProducts, setCartProducts] = useState<
-    {
-      id: number;
-      quantity: number;
-    }[]
-  >([]);
+function CartProvider({ children }: PropsWithChildren<{}>) {
+  const [cartProducts, setCartProducts] = useState([]);
 
   function getCartItems(id: number) {
     const quantity = cartProducts.find(
@@ -43,11 +38,11 @@ function CartProvider({ children }) {
       setCartProducts([...cartProducts, { id: id, quantity: 1 }]);
     } else {
       setCartProducts(
-        cartProducts.map((product) => {
+        cartProducts.map((product) =>
           product.id === id
             ? { ...product, quantity: product.quantity + 1 }
-            : product;
-        })
+            : product
+        )
       );
     }
   }
@@ -58,11 +53,11 @@ function CartProvider({ children }) {
       removeFromCart(id);
     } else {
       setCartProducts(
-        cartProducts.map((product) => {
+        cartProducts.map((product) =>
           product.id === id
             ? { ...product, quantity: product.quantity - 1 }
-            : product;
-        })
+            : product
+        )
       );
     }
   }
