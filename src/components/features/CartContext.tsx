@@ -18,7 +18,12 @@ export const CartContext = createContext<ContextType | null>({
 });
 
 function CartProvider({ children }: PropsWithChildren<{}>) {
-  const [cartProducts, setCartProducts] = useState([]);
+  const [cartProducts, setCartProducts] = useState<
+    {
+      id: number;
+      quantity: number;
+    }[]
+  >([]);
 
   function getCartItems(id: number) {
     const quantity = cartProducts.find(
