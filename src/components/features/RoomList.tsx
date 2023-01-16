@@ -39,6 +39,7 @@ function RoomList() {
       {data.rooms.map((room: Room) => (
         <RoomCard
           key={room.id}
+          id={room.id}
           name={room.name}
           beds={room.beds}
           pets={room.pets_allowed}

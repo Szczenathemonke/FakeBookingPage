@@ -14,58 +14,82 @@ import petsGrey from "../assets/icons/petsGrey.svg";
 const roomImg = [
   {
     name: "Potęga PRL",
+    id: 1,
+    quantity: 0,
     src: `${place1}`,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit sapiente eligendi obcaecati atque accusamus nobis aspernatur quo cum! Praesentium laborum iste veniam velit beatae exercitationem, sapiente delectus quia autem aspernatur.",
   },
   {
     name: "Następny Remont w 2052",
+    id: 2,
+    quantity: 0,
     src: `${place2}`,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit sapiente eligendi obcaecati atque accusamus nobis aspernatur quo cum! Praesentium laborum iste veniam velit beatae exercitationem, sapiente delectus quia autem aspernatur.",
   },
   {
     name: "Elegancki Pan z Odim",
+    id: 3,
+    quantity: 0,
     src: `${place3}`,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit sapiente eligendi obcaecati atque accusamus nobis aspernatur quo cum! Praesentium laborum iste veniam velit beatae exercitationem, sapiente delectus quia autem aspernatur.",
   },
   {
     name: "Salcesonik",
+    id: 4,
+    quantity: 0,
     src: `${place4}`,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit sapiente eligendi obcaecati atque accusamus nobis aspernatur quo cum! Praesentium laborum iste veniam velit beatae exercitationem, sapiente delectus quia autem aspernatur.",
   },
   {
     name: "Działkowiec DELUXE",
+    id: 5,
+    quantity: 0,
     src: `${place5}`,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit sapiente eligendi obcaecati atque accusamus nobis aspernatur quo cum! Praesentium laborum iste veniam velit beatae exercitationem, sapiente delectus quia autem aspernatur.",
   },
   {
     name: "Prezydencki",
+    id: 6,
+    quantity: 0,
     src: `${place6}`,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit sapiente eligendi obcaecati atque accusamus nobis aspernatur quo cum! Praesentium laborum iste veniam velit beatae exercitationem, sapiente delectus quia autem aspernatur.",
   },
   {
     name: "Windsurferski",
+    id: 7,
+    quantity: 0,
     src: `${place7}`,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit sapiente eligendi obcaecati atque accusamus nobis aspernatur quo cum! Praesentium laborum iste veniam velit beatae exercitationem, sapiente delectus quia autem aspernatur.",
   },
   {
     name: "Bogactwo",
+    id: 8,
+    quantity: 0,
     src: `${place8}`,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit sapiente eligendi obcaecati atque accusamus nobis aspernatur quo cum! Praesentium laborum iste veniam velit beatae exercitationem, sapiente delectus quia autem aspernatur.",
   },
   {
     name: "Złota Komnata",
+    id: 9,
+    quantity: 0,
     src: `${place9}`,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit sapiente eligendi obcaecati atque accusamus nobis aspernatur quo cum! Praesentium laborum iste veniam velit beatae exercitationem, sapiente delectus quia autem aspernatur.",
   },
 ];
 const petsIco = { yes: `${petsEmerald100}`, no: `${petsGrey}` };
-export { roomImg, petsIco };
+
+function getProductData(id: number) {
+  let productData = roomImg.find((product) => product.id === id);
+
+  return productData;
+}
+export { roomImg, petsIco, getProductData };

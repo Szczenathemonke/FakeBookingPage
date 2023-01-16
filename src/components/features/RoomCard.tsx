@@ -1,13 +1,21 @@
 import { useContext } from "react";
 import { Room } from "./RoomList";
 import { roomImg, petsIco } from "../roomData";
+import { CartContext } from "../features/CartContext";
 
 function RoomCard(props: {
+  id: number;
   name: string;
   price: number;
   beds: number;
   pets: boolean;
 }) {
+  const cart = useContext(CartContext);
+
+  const productQuantity = cart?.getCartItems(props.id);
+
+  console.log(cart?.items);
+
   return (
     <div className="card md:card-side md:w-[800px] m-10 bg-base-100 shadow-xl">
       <figure>
@@ -41,7 +49,12 @@ function RoomCard(props: {
           </div>
         </div>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Zarezerwuj</button>
+          <button
+            className="btn btn-primary"
+            onClick={() => cart?.addToCart(props.id)}
+          >
+            Zarezerwuj
+          </button>
         </div>
       </div>
     </div>
