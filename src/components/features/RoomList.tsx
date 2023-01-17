@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import RoomCard from "./RoomCard";
+import { fetchRoomList } from "./CartContext";
 
 export type Room = {
   beds: number;
@@ -11,15 +12,6 @@ export type Room = {
 };
 
 function RoomList() {
-  const fetchRoomList = async () => {
-    const res = await fetch(
-      "https://hotels.niezniszczalny-chinczyk.com/rooms",
-      { method: "GET" }
-    );
-
-    return res.json();
-  };
-
   const queryClient = useQueryClient();
 
   const { isLoading, isError, data, error } = useQuery(

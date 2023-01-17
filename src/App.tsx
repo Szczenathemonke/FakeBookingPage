@@ -11,8 +11,8 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <CartProvider>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <CartProvider>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<BookingHomepage />} />
@@ -20,8 +20,8 @@ function App() {
             <Route path="roomList" element={<RoomList />} />
           </Routes>
         </BrowserRouter>
-      </QueryClientProvider>
-    </CartProvider>
+      </CartProvider>
+    </QueryClientProvider>
   );
 }
 

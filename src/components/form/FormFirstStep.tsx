@@ -1,26 +1,20 @@
+import { useContext } from "react";
 import "react-datepicker/dist/react-datepicker.css";
+import { CartContext } from "../features/CartContext";
 import DatePickerComponent from "../features/DatePickerComponent";
 
 const FormFirstStep = () => {
+  const cart = useContext(CartContext);
+
   return (
     <>
-      <DatePickerComponent name="checkIn" type="date" />
-      {/* <DatePickerComponent name="checkOut" type="date" label="check-out" /> */}
+      {cart?.items.map((item) => (
+        <DatePickerComponent name="checkIn" type="date" key={item.id} />
+      ))}
     </>
   );
 };
 
 export default FormFirstStep;
-// napisać tutaj mapowanie dla kazdego pokoju stworzyć datePickerComponent
-{
-  /* <>
-      <InputComponent
-        name="checkIn"
-        type="date"
-        label="Check-in"
-        min={new Date().toJSON().slice(0, 10)}
-      />
 
-      <InputComponent name="checkOut" type="date" label="Check-out" min={} />
-    </> */
-}
+// dodać nazwy pokoi i zdjęcie

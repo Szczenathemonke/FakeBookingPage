@@ -11,23 +11,19 @@ function RoomCard(props: {
   pets: boolean;
 }) {
   const cart = useContext(CartContext);
+  let roomSrc = roomImg.find((x) => x.name === props.name)?.src;
+  let roomDescription = roomImg.find((x) => x.name === props.name)?.description;
 
   const productQuantity = cart?.getCartItems(props.id);
-
-  console.log(cart?.items);
 
   return (
     <div className="card md:card-side md:w-[800px] m-10 bg-base-100 shadow-xl">
       <figure>
-        <img
-          className="w-96 max-w-sm"
-          src={roomImg.find((x) => x.name === props.name)?.src}
-          alt="roomImg"
-        />
+        <img className="w-96 max-w-sm" src={roomSrc} alt="roomImg" />
       </figure>
       <div className="card-body ">
         <h2 className="card-title ">{props.name}</h2>
-        <p>{roomImg.find((x) => x.name === props.name)?.description}</p>
+        <p>{roomDescription}</p>
 
         <div className="flex row justify-between">
           <div>

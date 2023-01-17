@@ -31,7 +31,7 @@ const zodValidationStep2 = z.object({
   address1: z.string({ required_error: "Required Field!" }).min(1),
   address2: z.string(),
   city: z.string({ required_error: "Required Field!" }),
-  zip: z.number(),
+  zip: z.string(),
   country: z.string(),
   email: z
     .string({ required_error: "Required Field!" })

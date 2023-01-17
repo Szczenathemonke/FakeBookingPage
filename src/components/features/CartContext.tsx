@@ -1,14 +1,28 @@
 import { createContext, PropsWithChildren, useContext, useState } from "react";
 import { roomImg } from "../roomData";
 
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { Room } from "../features/RoomList";
+
 type ContextType = {
-  items: [];
+  items: {
+    id: number;
+    quantity: number;
+    details: Room;
+  }[];
   getCartItems: (id: number) => void;
   addToCart: (id: number) => void;
   removeOneFromCart: (id: number) => void;
   removeFromCart: (id: number) => void;
 };
 
+export const fetchRoomList = async () => {
+  const res = await fetch("https://hotels.niezniszczalny-chinczyk.com/rooms", {
+    method: "GET",
+  });
+
+  return res.json();
+};
 export const CartContext = createContext<ContextType | null>({
   items: [],
   getCartItems: () => {},
@@ -22,8 +36,16 @@ function CartProvider({ children }: PropsWithChildren<{}>) {
     {
       id: number;
       quantity: number;
+      details: Room;
     }[]
   >([]);
+  const queryClient = useQueryClient();
+
+  const { data } = useQuery(["rooms"], fetchRoomList);
+
+  const getDetails = (id: number) => {
+    return data.rooms.find((room: Room) => room.id === id);
+  };
 
   function getCartItems(id: number) {
     const quantity = cartProducts.find(
@@ -39,8 +61,15 @@ function CartProvider({ children }: PropsWithChildren<{}>) {
   function addToCart(id: number) {
     const quantity = getCartItems(id);
 
+    const details = getDetails(id);
+
+    console.log(cartProducts);
+
     if (quantity === 0) {
-      setCartProducts([...cartProducts, { id: id, quantity: 1 }]);
+      setCartProducts([
+        ...cartProducts,
+        { id: id, quantity: 1, details: details },
+      ]);
     } else {
       setCartProducts(
         cartProducts.map((product) =>
