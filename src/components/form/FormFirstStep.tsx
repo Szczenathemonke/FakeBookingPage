@@ -9,7 +9,12 @@ const FormFirstStep = () => {
   return (
     <>
       {cart?.items.map((item) => (
-        <DatePickerComponent name="checkIn" type="date" key={item.id} />
+        <DatePickerComponent
+          name="checkIn"
+          type="date"
+          roomId={item.id}
+          key={item.id}
+        />
       ))}
     </>
   );

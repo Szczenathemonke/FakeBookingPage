@@ -1,10 +1,13 @@
 import { useContext } from "react";
 import { CartContext } from "../features/CartContext";
-import { useFormikContext } from "formik";
+import { useField, useFormikContext } from "formik";
+import { Values } from "../MultiPageForm";
 
 const FormSummary = () => {
   const cart = useContext(CartContext);
-  const { values: unknown } = useFormikContext();
+  const { values, setFieldValue } = useFormikContext<Values>();
+
+  console.log(values);
 
   return (
     <>
@@ -12,7 +15,7 @@ const FormSummary = () => {
 
       {cart?.items.map((item) => (
         <div key={item.id}>
-          <span>{item.details.name}</span> od dnia <span></span>
+          <span>{item.details.name}</span> od dnia <span>{}</span>
         </div>
       ))}
     </>
@@ -34,3 +37,5 @@ export default FormSummary;
 //   country: "",
 //   email: "",
 // }
+
+// values.reservation.find((e) => e.roomId === item.id)
