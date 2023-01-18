@@ -24,17 +24,11 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
     checkOut: new Date(),
   };
 
-  const roomReservation = values.reservation.find(
-    (e) => e.roomId === props.roomId
-  )?.checkIn;
+  // const roomReservation = values.reservation.find(
+  //   (e) => e.roomId === props.roomId
+  // )?.checkIn;
 
-  // useEffect(()=>{
-
-  //   values.reservation.push(newReservation)
-
-  //   return
-  // },[])
-
+  console.log(values);
   return (
     <div className="flex flex-row w-64 gap-2  ">
       <label className="block">
@@ -44,20 +38,14 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
           {...field}
           {...props}
           selected={startDate}
-          // onChange={(date) => setStartDate(date)}
           onChange={(date) => {
-            // if (
-            //   values.reservation.find((e) => e.roomId === props.roomId) ===
-            //   undefined
-            // ) {
-            //   values.reservation.push(newReservation);
-            // }
-            setFieldValue(`reservation.${props.roomId}`, {
-              ...newReservation,
-              checkIn: date,
-            });
+            setFieldValue(
+              `reservation.${props.roomId}.roomId`,
+              props.roomId,
+              false
+            );
+            setFieldValue(`reservation.${props.roomId}.checkIn`, date, false);
             setStartDate(date);
-            console.log(values);
           }}
           dateFormat="dd.MM.yy"
           selectsStart
@@ -77,21 +65,10 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
           {...field}
           {...props}
           selected={endDate}
-          // onChange={(date) => setEndDate(date)}
           onChange={(date) => {
-            // if (
-            //   values.reservation.find((e) => e.roomId === props.roomId) ===
-            //   undefined
-            // ) {
-            //   values.reservation.push(newReservation);
-            // }
-            setFieldValue(`reservation.${props.roomId}`, {
-              ...newReservation,
-              checkOut: date,
-            });
+            setFieldValue(`reservation.${props.roomId}.checkOut`, date, false);
 
             setEndDate(date);
-            console.log(values);
           }}
           dateFormat="dd.MM.yy"
           selectsEnd
