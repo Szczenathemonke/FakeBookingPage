@@ -1,10 +1,16 @@
+import { useFormikContext } from "formik";
 import { useContext } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import { CartContext } from "../features/CartContext";
 import DatePickerComponent from "../features/DatePickerComponent";
+import { Values } from "../MultiPageForm";
 
 const FormFirstStep = () => {
   const cart = useContext(CartContext);
+
+  // const { values } = useFormikContext<Values>();
+
+  // const dateValidationName = values.reservation;
 
   return (
     <>

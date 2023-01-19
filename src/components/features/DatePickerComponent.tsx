@@ -13,7 +13,7 @@ type InputProps = {
 };
 
 const DatePickerComponent = ({ ...props }: InputProps) => {
-  const { values, setValues, setFieldValue } = useFormikContext<Values>();
+  const { values, setFieldValue } = useFormikContext<Values>();
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [endDate, setEndDate] = useState<Date | null>(new Date());
   const [field, meta] = useField(props);
@@ -39,12 +39,19 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
           {...props}
           selected={startDate}
           onChange={(date) => {
+            if (
+              values.reservation.find((e) => e.roomId === props.roomId) ===
+              undefined
+            ) {
+              values.reservation.push(newReservation);
+            }
             setFieldValue(
-              `reservation.${props.roomId}.roomId`,
-              props.roomId,
-              false
+              `reservation.${values.reservation.findIndex(
+                (e) => e.roomId === props.roomId
+              )}.checkIn`,
+              date,
+              true
             );
-            setFieldValue(`reservation.${props.roomId}.checkIn`, date, false);
             setStartDate(date);
           }}
           dateFormat="dd.MM.yy"
@@ -66,7 +73,19 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
           {...props}
           selected={endDate}
           onChange={(date) => {
-            setFieldValue(`reservation.${props.roomId}.checkOut`, date, false);
+            if (
+              values.reservation.find((e) => e.roomId === props.roomId) ===
+              undefined
+            ) {
+              values.reservation.push(newReservation);
+            }
+            setFieldValue(
+              `reservation.${values.reservation.findIndex(
+                (e) => e.roomId === props.roomId
+              )}.checkOut`,
+              date,
+              true
+            );
 
             setEndDate(date);
           }}

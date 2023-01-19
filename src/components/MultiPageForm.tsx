@@ -26,8 +26,15 @@ export type Values = {
 
 // form level validation poniżej -> problem z walidacją podczas przechodzenia przyciskami -> przyciski działają cały czas
 const zodValidationStep1 = z.object({
-  checkIn: z.date({ required_error: "Required Field!" }),
-  checkOut: z.date({ required_error: "Required Field!" }),
+  // reservations: z.array(
+  //   z.object({
+  //     roomID: z.number(),
+  //     checkIn: z.date({ required_error: "Required Field!" }),
+  //     checkOut: z.date({ required_error: "Required Field!" }),
+  //   })
+  // ),
+  // checkIn: z.date({ required_error: "Required Field!" })
+  // checkOut: z.date({ required_error: "Required Field!" }),
 });
 const zodValidationStep2 = z.object({
   firstName: z.string({ required_error: "Required Field!" }).max(15).min(1),
