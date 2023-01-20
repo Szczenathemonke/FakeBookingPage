@@ -19,14 +19,10 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
   const [field, meta] = useField(props);
 
   const newReservation = {
-    roomId: props.roomId,
-    checkIn: new Date(),
-    checkOut: new Date(),
+    room_Id: props.roomId,
+    start_date: "",
+    end_date: "",
   };
-
-  // const roomReservation = values.reservation.find(
-  //   (e) => e.roomId === props.roomId
-  // )?.checkIn;
 
   console.log(values);
   return (
@@ -40,16 +36,16 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
           selected={startDate}
           onChange={(date) => {
             if (
-              values.reservation.find((e) => e.roomId === props.roomId) ===
+              values.reservation.find((e) => e.room_Id === props.roomId) ===
               undefined
             ) {
               values.reservation.push(newReservation);
             }
             setFieldValue(
               `reservation.${values.reservation.findIndex(
-                (e) => e.roomId === props.roomId
-              )}.checkIn`,
-              date,
+                (e) => e.room_Id === props.roomId
+              )}.start_date`,
+              date?.toISOString().slice(0, 10),
               true
             );
             setStartDate(date);
@@ -74,16 +70,16 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
           selected={endDate}
           onChange={(date) => {
             if (
-              values.reservation.find((e) => e.roomId === props.roomId) ===
+              values.reservation.find((e) => e.room_Id === props.roomId) ===
               undefined
             ) {
               values.reservation.push(newReservation);
             }
             setFieldValue(
               `reservation.${values.reservation.findIndex(
-                (e) => e.roomId === props.roomId
-              )}.checkOut`,
-              date,
+                (e) => e.room_Id === props.roomId
+              )}.end_date`,
+              date?.toISOString().slice(0, 10),
               true
             );
 

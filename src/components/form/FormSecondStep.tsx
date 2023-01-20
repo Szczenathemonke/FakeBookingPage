@@ -11,11 +11,11 @@ const FormSecondStep = () => {
       <InputComponent name="zip" type="text" label="zip-code" />
       <InputComponent name="country" type="text" label="country" />
       <InputComponent name="email" type="email" label="email address" />
-      <InputComponent
+      {/* <InputComponent
         name="emailConfirm"
         type="email"
         label="confirm your email address"
-      />
+      /> */}
     </>
   );
 };

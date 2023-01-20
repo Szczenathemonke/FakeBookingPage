@@ -2,24 +2,25 @@ import { useContext } from "react";
 import { CartContext } from "../features/CartContext";
 import { useField, useFormikContext } from "formik";
 import { Values } from "../MultiPageForm";
+import StripeCheckout from "../features/StripeCheckout";
 
 const FormSummary = () => {
   const cart = useContext(CartContext);
   const { values, setFieldValue } = useFormikContext<Values>();
 
-  const itemCheckInDate = (itemId: number) => {
-    return values.reservation
-      .find((e) => e.roomId === itemId)
-      ?.checkIn.toISOString()
-      .slice(0, 10);
-  };
+  // const itemCheckInDate = (itemId: number) => {
+  //   return values.reservation
+  //     .find((e) => e.roomId === itemId)
+  //     ?.checkIn.toISOString()
+  //     .slice(0, 10);
+  // };
 
-  const itemCheckOutDate = (itemId: number) => {
-    return values.reservation
-      .find((e) => e.roomId === itemId)
-      ?.checkOut.toISOString()
-      .slice(0, 10);
-  };
+  // const itemCheckOutDate = (itemId: number) => {
+  //   return values.reservation
+  //     .find((e) => e.roomId === itemId)
+  //     ?.checkOut.toISOString()
+  //     .slice(0, 10);
+  // };
 
   return (
     <>
@@ -65,11 +66,16 @@ const FormSummary = () => {
         <div key={item.id}>
           <span>{item.details.name} </span>
           <span>od dnia </span>
-          <div>{itemCheckInDate(item.details.id)}</div>
+          <div>
+            {values.reservation.find((e) => e.room_Id === item.id)?.start_date}
+          </div>
           <span>do dnia </span>
-          <div>{itemCheckOutDate(item.details.id)}</div>
+          <div>
+            {values.reservation.find((e) => e.room_Id === item.id)?.end_date}
+          </div>
         </div>
       ))}
+      <StripeCheckout />
     </>
   );
 };
