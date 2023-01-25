@@ -1,12 +1,13 @@
 import "./App.css";
 import FinalizeReservation from "./components/pages/FinalizeReservation";
-import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BookingHomepage from "./components/pages/BookingHomepage";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 import RoomList from "./components/features/RoomList";
 import CartProvider from "./components/features/CartContext";
-import StripeCheckout from "./components/features/StripeCheckout";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </CartProvider>
+      <ReactQueryDevtools />
     </QueryClientProvider>
   );
 }

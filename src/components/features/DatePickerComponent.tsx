@@ -19,7 +19,7 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
   const [field, meta] = useField(props);
 
   const newReservation = {
-    room_Id: props.roomId,
+    room_id: props.roomId,
     start_date: "",
     end_date: "",
   };
@@ -36,14 +36,14 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
           selected={startDate}
           onChange={(date) => {
             if (
-              values.reservation.find((e) => e.room_Id === props.roomId) ===
+              values.reservation.find((e) => e.room_id === props.roomId) ===
               undefined
             ) {
               values.reservation.push(newReservation);
             }
             setFieldValue(
               `reservation.${values.reservation.findIndex(
-                (e) => e.room_Id === props.roomId
+                (e) => e.room_id === props.roomId
               )}.start_date`,
               date?.toISOString().slice(0, 10),
               true
@@ -70,14 +70,14 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
           selected={endDate}
           onChange={(date) => {
             if (
-              values.reservation.find((e) => e.room_Id === props.roomId) ===
+              values.reservation.find((e) => e.room_id === props.roomId) ===
               undefined
             ) {
               values.reservation.push(newReservation);
             }
             setFieldValue(
               `reservation.${values.reservation.findIndex(
-                (e) => e.room_Id === props.roomId
+                (e) => e.room_id === props.roomId
               )}.end_date`,
               date?.toISOString().slice(0, 10),
               true

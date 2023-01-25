@@ -9,7 +9,7 @@ import FormThirdStep from "./form/FormThirdStep";
 
 export type Values = {
   reservation: {
-    room_Id: number;
+    room_id: number;
     start_date: string;
     end_date: string;
   }[];
@@ -89,7 +89,7 @@ const MultiPageForm = () => {
       <div className="flex flex-row justify-between">
         <Formik
           initialValues={{
-            reservation: [{ room_Id: 0, start_date: "", end_date: "" }],
+            reservation: [{ room_id: 0, start_date: "", end_date: "" }],
 
             firstName: "",
             lastName: "",

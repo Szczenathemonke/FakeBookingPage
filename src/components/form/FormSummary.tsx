@@ -67,11 +67,11 @@ const FormSummary = () => {
           <span>{item.details.name} </span>
           <span>od dnia </span>
           <div>
-            {values.reservation.find((e) => e.room_Id === item.id)?.start_date}
+            {values.reservation.find((e) => e.room_id === item.id)?.start_date}
           </div>
           <span>do dnia </span>
           <div>
-            {values.reservation.find((e) => e.room_Id === item.id)?.end_date}
+            {values.reservation.find((e) => e.room_id === item.id)?.end_date}
           </div>
         </div>
       ))}

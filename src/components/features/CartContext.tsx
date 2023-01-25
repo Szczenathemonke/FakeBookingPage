@@ -39,7 +39,6 @@ function CartProvider({ children }: PropsWithChildren<{}>) {
       details: Room;
     }[]
   >([]);
-  const queryClient = useQueryClient();
 
   const { data } = useQuery(["rooms"], fetchRoomList);
 
