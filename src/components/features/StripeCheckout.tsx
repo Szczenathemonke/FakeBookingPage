@@ -23,11 +23,9 @@ type roomOrder = {
 };
 
 // API key od marcina
-const stripePromise = loadStripe(
-  "pk_test_51MSE0PCQmntgWt5LTKGdk1Djar53wMGGUiQe2CX3BzBe3r7bwRoCKk32h6NfDmsUfqezdx7DhOr0gKPgukwXdu0a0018BsLp5u"
-);
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PKEY);
 
-function translateShipping() {
+export function translateShipping() {
   const { values, setFieldValue } = useFormikContext<Values>();
   const roomOrder: roomOrder = {
     rooms_order: [],
@@ -39,8 +37,8 @@ function translateShipping() {
       billing_country: `${values.country}`,
     },
   };
-
-  roomOrder.rooms_order = values.reservation.slice(0, 1);
+  values.reservation.forEach((e) => roomOrder.rooms_order.push(e));
+  roomOrder.rooms_order.shift();
 
   return roomOrder;
 }
@@ -73,7 +71,7 @@ function StripeCheckout() {
     ).then((res) =>
       res.json().then((data) => setClientSecret(data.clientSecret))
     );
-  }, []);
+  }, [orderId]);
 
   const appearance: Appearance = {
     theme: "night",
