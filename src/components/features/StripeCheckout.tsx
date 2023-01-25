@@ -22,7 +22,6 @@ type roomOrder = {
   };
 };
 
-// API key od marcina
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PKEY);
 
 export function translateShipping() {
@@ -71,7 +70,7 @@ function StripeCheckout() {
     ).then((res) =>
       res.json().then((data) => setClientSecret(data.clientSecret))
     );
-  }, [orderId]);
+  }, []);
 
   const appearance: Appearance = {
     theme: "night",
