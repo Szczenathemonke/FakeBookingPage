@@ -3,6 +3,7 @@ import { CartContext } from "../features/CartContext";
 import { useField, useFormikContext } from "formik";
 import { Values } from "../MultiPageForm";
 import StripeCheckout from "../features/StripeCheckout";
+import CheckoutComponent from "../features/CheckoutComponent";
 
 const FormSummary = () => {
   const cart = useContext(CartContext);
@@ -75,6 +76,7 @@ const FormSummary = () => {
           </div>
         </div>
       ))}
+      <StripeCheckout />
     </>
   );
 };

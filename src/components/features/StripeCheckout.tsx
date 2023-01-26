@@ -50,28 +50,6 @@ function StripeCheckout() {
 
   const newOrder = translateShipping();
 
-  // tutaj podać przedmioty z koszyka
-
-  // const getOrderId = useQuery(["orderId"], async () => {
-  //   return await fetch("https://hotels.niezniszczalny-chinczyk.com/order", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(newOrder),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setOrderId(data.order_id);
-  //       return fetch(
-  //         `https://hotels.niezniszczalny-chinczyk.com/order/${data.order_id}/payment`,
-  //         { method: "POST" }
-  //       );
-  //     })
-  //     .then((res) => res.json())
-  //     .then((data) => setClientSecret(data.client_secret));
-  // });
-
   const fetchSecret = async () => {
     await fetch("https://hotels.niezniszczalny-chinczyk.com/order", {
       method: "POST",
@@ -186,3 +164,24 @@ export default StripeCheckout;
 //     billing_country: "polska",
 //   },
 // };
+// tutaj podać przedmioty z koszyka
+
+// const getOrderId = useQuery(["orderId"], async () => {
+//   return await fetch("https://hotels.niezniszczalny-chinczyk.com/order", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(newOrder),
+//   })
+//     .then((res) => res.json())
+//     .then((data) => {
+//       setOrderId(data.order_id);
+//       return fetch(
+//         `https://hotels.niezniszczalny-chinczyk.com/order/${data.order_id}/payment`,
+//         { method: "POST" }
+//       );
+//     })
+//     .then((res) => res.json())
+//     .then((data) => setClientSecret(data.client_secret));
+// });
