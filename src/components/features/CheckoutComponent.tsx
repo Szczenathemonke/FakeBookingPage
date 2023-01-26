@@ -14,36 +14,36 @@ function CheckoutComponent() {
   const [isLoading, setIsLoading] = useState(false);
   const queryClient = useQueryClient();
 
-  // useEffect(() => {
-  //   if (!stripe) {
-  //     return;
-  //   }
+  useEffect(() => {
+    if (!stripe) {
+      return;
+    }
 
-  //   const clientSecret = new URLSearchParams(window.location.search).get(
-  //     "payment_intent_client_secret"
-  //   );
+    const clientSecret = new URLSearchParams(window.location.search).get(
+      "payment_intent_client_secret"
+    );
 
-  //   if (!clientSecret) {
-  //     return;
-  //   }
+    if (!clientSecret) {
+      return;
+    }
 
-  //   stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-  //     switch (paymentIntent?.status) {
-  //       case "succeeded":
-  //         setMessage("Payment succeeded!");
-  //         break;
-  //       case "processing":
-  //         setMessage("Your payment is processing.");
-  //         break;
-  //       case "requires_payment_method":
-  //         setMessage("Your payment was not successful, please try again.");
-  //         break;
-  //       default:
-  //         setMessage("Something went wrong.");
-  //         break;
-  //     }
-  //   });
-  // }, [stripe]);
+    stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
+      switch (paymentIntent?.status) {
+        case "succeeded":
+          setMessage("Payment succeeded!");
+          break;
+        case "processing":
+          setMessage("Your payment is processing.");
+          break;
+        case "requires_payment_method":
+          setMessage("Your payment was not successful, please try again.");
+          break;
+        default:
+          setMessage("Something went wrong.");
+          break;
+      }
+    });
+  }, [stripe]);
 
   const paymentElementOptions: StripePaymentElementOptions = {
     layout: "tabs",
@@ -63,7 +63,7 @@ function CheckoutComponent() {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "http://127.0.0.1:5173",
+        return_url: "http://127.0.0.1:5174",
       },
     });
 
@@ -82,14 +82,14 @@ function CheckoutComponent() {
   };
 
   return (
-    <div>
+    <form id="payment-form" onSubmit={handleSubmit}>
       <PaymentElement id="payment-element" options={paymentElementOptions} />
       <button disabled={isLoading || !stripe || !elements} id="submit">
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>
       </button>
-    </div>
+    </form>
   );
 }
 

@@ -1,3 +1,4 @@
+import StripeCheckout from "../features/StripeCheckout";
 import MultiPageForm from "../MultiPageForm";
 
 function FinalizeReservation() {

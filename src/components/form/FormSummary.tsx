@@ -75,7 +75,6 @@ const FormSummary = () => {
           </div>
         </div>
       ))}
-      <StripeCheckout />
     </>
   );
 };
