@@ -1,47 +1,33 @@
-import { createContext, useState } from "react";
 import "./App.css";
+import FinalizeReservation from "./components/pages/FinalizeReservation";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import BookingHomepage from "./components/pages/BookingHomepage";
 
-import FormSwitch from "./components/FormSwitch";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+import RoomList from "./components/features/RoomList";
+import CartProvider from "./components/features/CartContext";
+import StripeCheckout from "./components/features/StripeCheckout";
+
+const queryClient = new QueryClient();
 
 function App() {
-  const [page, setPage] = useState(0);
-
   return (
-    <div className="container  m-h-screen">
-      <div className="flex flex-col m-10">
-        <div className="flex flex-row justify-center">
-          <FormSwitch step={page} />
-        </div>
-        <div className="flex flex-row justify-between">
-          <div>
-            {page > 0 && (
-              <button
-                className="btn btn-primary"
-                onClick={() => setPage((old) => old - 1)}
-              >
-                previous
-              </button>
-            )}
-          </div>
-
-          <div>
-            {page < 3 && (
-              <button
-                className="btn btn-primary"
-                onClick={() => setPage((old) => old + 1)}
-              >
-                next
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <CartProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<BookingHomepage />} />
+            <Route path="finalize" element={<FinalizeReservation />} />
+            <Route path="roomList" element={<RoomList />} />
+            <Route path="testPayment" element={<StripeCheckout />} />
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   );
 }
 
 export default App;
-
-{
-  /* <button onClick={setPage((old) => old + 1)}></button> */
-}
