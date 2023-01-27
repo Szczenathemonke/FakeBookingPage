@@ -1,7 +1,10 @@
 import { Formik, FormikProps, Form } from "formik";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { toFormikValidationSchema } from "zod-formik-adapter";
+import { CartContext } from "./features/CartContext";
+
 import FormFirstStep from "./form/FormFirstStep";
 import FormSecondStep from "./form/FormSecondStep";
 import FormSummary from "./form/FormSummary";
@@ -53,6 +56,8 @@ const zodValidationStep3 = z.object({});
 
 const MultiPageForm = () => {
   const [page, setPage] = useState(0);
+  const order = useContext(CartContext);
+  const navigate = useNavigate();
 
   const formSwitch = (page: number) => {
     switch (page) {
@@ -102,8 +107,10 @@ const MultiPageForm = () => {
           }}
           validationSchema={formSwitchValidation(page)}
           onSubmit={(values) => {
+            values.reservation.shift();
+            order?.translateShipping(values);
             console.log(JSON.stringify(values));
-            alert(JSON.stringify(values));
+            navigate("/testPayment");
           }}
         >
           {(formProps: FormikProps<Values>) => (

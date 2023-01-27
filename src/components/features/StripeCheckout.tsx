@@ -11,7 +11,7 @@ import { useFormikContext } from "formik";
 import { Values } from "../MultiPageForm";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
-type roomOrder = {
+export type RoomOrder = {
   rooms_order: { room_id: number; start_date: string; end_date: string }[];
   address_details: {
     email: string;
@@ -27,7 +27,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PKEY);
 
 export function translateShipping() {
   const { values } = useFormikContext<Values>();
-  const roomOrder: roomOrder = {
+  const roomOrder: RoomOrder = {
     rooms_order: [],
     address_details: {
       email: `${values.email}`,
@@ -47,8 +47,7 @@ export function translateShipping() {
 function StripeCheckout() {
   const [clientSecret, setClientSecret] = useState("");
   const [orderId, setOrderId] = useState<number | null>(null);
-
-  const newOrder = translateShipping();
+  const newOrder = useContext(CartContext);
 
   const fetchSecret = async () => {
     await fetch("https://hotels.niezniszczalny-chinczyk.com/order", {
@@ -56,7 +55,7 @@ function StripeCheckout() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newOrder),
+      body: JSON.stringify(newOrder?.translatedOrder),
     })
       .then((res) => res.json())
       .then((data) => {

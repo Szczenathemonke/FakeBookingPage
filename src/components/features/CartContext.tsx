@@ -3,6 +3,7 @@ import { roomImg } from "../roomData";
 
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Room } from "../features/RoomList";
+import { Values } from "../MultiPageForm";
 
 type ContextType = {
   items: {
@@ -14,6 +15,20 @@ type ContextType = {
   addToCart: (id: number) => void;
   removeOneFromCart: (id: number) => void;
   removeFromCart: (id: number) => void;
+  translateShipping: (value: Values) => void;
+  translatedOrder: RoomOrder | null;
+};
+
+type RoomOrder = {
+  rooms_order: { room_id: number; start_date: string; end_date: string }[];
+  address_details: {
+    email: string;
+    billing_city: string;
+    billing_street: string;
+    billing_street_add?: string | undefined;
+    billing_postcode: string;
+    billing_country: string;
+  };
 };
 
 export const fetchRoomList = async () => {
@@ -23,12 +38,32 @@ export const fetchRoomList = async () => {
 
   return res.json();
 };
+// export function translateShipping(values: Values) {
+//   const roomOrder: RoomOrder = {
+//     rooms_order: [],
+//     address_details: {
+//       email: `${values.email}`,
+//       billing_city: `${values.city}`,
+//       billing_street: `${values.address1}`,
+//       billing_street_add: `${values.address2}`,
+//       billing_postcode: `${values.zip}`,
+//       billing_country: `${values.country}`,
+//     },
+//   };
+//   values.reservation.forEach((e) => roomOrder.rooms_order.push(e));
+//   roomOrder.rooms_order.shift();
+
+//   return roomOrder;
+// }
+
 export const CartContext = createContext<ContextType | null>({
   items: [],
   getCartItems: () => {},
   addToCart: () => {},
   removeOneFromCart: () => {},
   removeFromCart: () => {},
+  translateShipping: () => {},
+  translatedOrder: null,
 });
 
 function CartProvider({ children }: PropsWithChildren<{}>) {
@@ -39,6 +74,9 @@ function CartProvider({ children }: PropsWithChildren<{}>) {
       details: Room;
     }[]
   >([]);
+  const [translatedOrder, setTranslatedOrder] = useState<RoomOrder | null>(
+    null
+  );
 
   const { data } = useQuery(["rooms"], fetchRoomList);
 
@@ -61,8 +99,6 @@ function CartProvider({ children }: PropsWithChildren<{}>) {
     const quantity = getCartItems(id);
 
     const details = getDetails(id);
-
-    console.log(cartProducts);
 
     if (quantity === 0) {
       setCartProducts([
@@ -102,13 +138,31 @@ function CartProvider({ children }: PropsWithChildren<{}>) {
       })
     );
   }
+  function translateShipping(values: Values) {
+    const roomOrder: RoomOrder = {
+      rooms_order: [],
+      address_details: {
+        email: `${values.email}`,
+        billing_city: `${values.city}`,
+        billing_street: `${values.address1}`,
+        billing_street_add: `${values.address2}`,
+        billing_postcode: `${values.zip}`,
+        billing_country: `${values.country}`,
+      },
+    };
+    values.reservation.forEach((e) => roomOrder.rooms_order.push(e));
+    // roomOrder.rooms_order.shift();
 
+    return setTranslatedOrder(roomOrder);
+  }
   const contextValue = {
     items: cartProducts,
     getCartItems,
     addToCart,
     removeOneFromCart,
     removeFromCart,
+    translatedOrder: translatedOrder,
+    translateShipping,
   };
   return (
     <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
