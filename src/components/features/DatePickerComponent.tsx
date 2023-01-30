@@ -20,11 +20,10 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
 
   const newReservation = {
     room_id: props.roomId,
-    start_date: "",
-    end_date: "",
+    start_date: new Date().toISOString().slice(0, 10),
+    end_date: new Date().toISOString().slice(0, 10),
   };
 
-  console.log(values);
   return (
     <div className="flex flex-row w-64 gap-2  ">
       <label className="block">
