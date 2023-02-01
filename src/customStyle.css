@@ -18,3 +18,7 @@
   animation: slide 60s linear infinite;
   width: 5076px;
 }
+
+.homePageHeroBg {
+  background-image: url("./assets/rooms/hotel-lobby.jpg");
+}

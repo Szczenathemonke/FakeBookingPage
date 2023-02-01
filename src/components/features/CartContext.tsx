@@ -3,7 +3,7 @@ import { roomImg } from "../roomData";
 
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Room } from "../features/RoomList";
-import { Values } from "../MultiPageForm";
+import { Values } from "../form/MultiPageForm";
 
 type ContextType = {
   items: {

@@ -3,6 +3,8 @@ import InputComponent from "../features/InputComponent";
 const FormSecondStep = () => {
   return (
     <>
+      <h2 className="font-bold">Fill Your Personal Data: </h2>
+      <div className="divider"></div>
       <InputComponent name="firstName" type="text" label="First name" />
       <InputComponent name="lastName" type="text" label="Last name" />
       <InputComponent name="address1" type="text" label="address" />

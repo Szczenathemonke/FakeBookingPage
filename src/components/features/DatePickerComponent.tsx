@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Values } from "../MultiPageForm";
+import { Values } from "../form/MultiPageForm";
 
 type InputProps = {
   name: string;
@@ -33,6 +33,7 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
           {...field}
           {...props}
           selected={startDate}
+          minDate={startDate}
           onChange={(date) => {
             if (
               values.reservation.find((e) => e.room_id === props.roomId) ===

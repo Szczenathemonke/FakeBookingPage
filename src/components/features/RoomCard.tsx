@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Room } from "./RoomList";
 import { roomImg, petsIco } from "../roomData";
 import { CartContext } from "../features/CartContext";
@@ -13,11 +13,12 @@ function RoomCard(props: {
   const cart = useContext(CartContext);
   let roomSrc = roomImg.find((x) => x.name === props.name)?.src;
   let roomDescription = roomImg.find((x) => x.name === props.name)?.description;
+  let isAddedToCart = cart?.items.some((item) => item.id === props.id);
 
   const productQuantity = cart?.getCartItems(props.id);
 
   return (
-    <div className="card md:card-side md:w-[800px] m-10 bg-base-100 shadow-xl">
+    <div className="card lg:card-side max-w-[375px] lg:max-w-[800px] m-5 bg-base-100 shadow-xl ">
       <figure>
         <img className="w-96 max-w-sm" src={roomSrc} alt="roomImg" />
       </figure>
@@ -46,8 +47,11 @@ function RoomCard(props: {
         </div>
         <div className="card-actions justify-end">
           <button
-            className="btn btn-primary"
-            onClick={() => cart?.addToCart(props.id)}
+            className="btn bg-emerald-500 border-none"
+            onClick={() => {
+              return cart?.addToCart(props.id);
+            }}
+            disabled={isAddedToCart}
           >
             Zarezerwuj
           </button>

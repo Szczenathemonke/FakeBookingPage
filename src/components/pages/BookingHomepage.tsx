@@ -9,7 +9,7 @@ function BookingHomepage() {
   // const rooms = { room1: "potega", room2: "remont" };
 
   return (
-    <div className="h-screen max-h-full">
+    <div className="max-h-full">
       <HeaderHomepage />
       <HeroHomepage />
       <CarouselHomepage />

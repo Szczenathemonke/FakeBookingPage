@@ -8,7 +8,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutComponent from "./CheckoutComponent";
 import { CartContext } from "../features/CartContext";
 import { useFormikContext } from "formik";
-import { Values } from "../MultiPageForm";
+import { Values } from "../form/MultiPageForm";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export type RoomOrder = {

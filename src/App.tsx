@@ -20,7 +20,6 @@ function App() {
           <Routes>
             <Route path="/" element={<BookingHomepage />} />
             <Route path="finalize" element={<FinalizeReservation />} />
-            <Route path="roomList" element={<RoomList />} />
             <Route path="testPayment" element={<StripeCheckout />} />
           </Routes>
         </BrowserRouter>

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "../features/CartContext";
 import { useField, useFormikContext } from "formik";
-import { Values } from "../MultiPageForm";
+import { Values } from "./MultiPageForm";
 import StripeCheckout from "../features/StripeCheckout";
 import CheckoutComponent from "../features/CheckoutComponent";
 

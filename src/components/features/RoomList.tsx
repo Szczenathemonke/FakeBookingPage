@@ -11,7 +11,7 @@ export type Room = {
   price_in_cents: number;
 };
 
-function RoomList() {
+function RoomList(prop: { page: number }) {
   const queryClient = useQueryClient();
 
   const { isLoading, isError, data, error } = useQuery(
@@ -28,16 +28,18 @@ function RoomList() {
   console.log(data);
   return (
     <>
-      {data.rooms.map((room: Room) => (
-        <RoomCard
-          key={room.id}
-          id={room.id}
-          name={room.name}
-          beds={room.beds}
-          pets={room.pets_allowed}
-          price={room.price_in_cents}
-        />
-      ))}
+      {data.rooms
+        .slice(5 * (prop.page - 1), 5 * prop.page)
+        .map((room: Room) => (
+          <RoomCard
+            key={room.id}
+            id={room.id}
+            name={room.name}
+            beds={room.beds}
+            pets={room.pets_allowed}
+            price={room.price_in_cents}
+          />
+        ))}
     </>
   );
 }
@@ -45,3 +47,4 @@ function RoomList() {
 export default RoomList;
 
 //
+// slice(5*({page}-1),5*{page})
