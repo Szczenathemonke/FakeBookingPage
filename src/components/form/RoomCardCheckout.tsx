@@ -1,10 +1,6 @@
-import React, { useContext } from "react";
 import { roomImg } from "../roomData";
-import { CartContext } from "./CartContext";
-import { Room } from "./RoomList";
 
 function RoomCardCheckout(props: { name: string }) {
-  const cart = useContext(CartContext);
   let roomSrc = roomImg.find((x) => x.name === props.name)?.src;
   return (
     <>
@@ -22,11 +18,3 @@ function RoomCardCheckout(props: { name: string }) {
 }
 
 export default RoomCardCheckout;
-
-// {
-//     id: number;
-//     name: string;
-//     price: number;
-//     beds: number;
-//     pets: boolean;
-//   }

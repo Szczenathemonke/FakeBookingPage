@@ -1,7 +1,6 @@
-import { spawn } from "child_process";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "./CartContext";
+import { CartContext } from "../dataAndFeatures/CartContext";
 
 function ShoppingCartDropdown() {
   const cart = useContext(CartContext);
@@ -79,5 +78,3 @@ function ShoppingCartDropdown() {
 }
 
 export default ShoppingCartDropdown;
-
-// setCartIndicator((prev) => prev + 1);

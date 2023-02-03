@@ -1,8 +1,6 @@
 import { createContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import RoomList from "./features/RoomList";
-import ShoppingCart from "./features/ShoppingCart";
-import ShoppingCartDropdown from "./features/ShoppingCartDropdown";
+import RoomList from "./RoomList";
 
 function RoomsHomepage() {
   const [page, setPage] = useState<number>(1);

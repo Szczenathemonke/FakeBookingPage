@@ -1,5 +1,5 @@
 import { useField, useFormikContext } from "formik";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -100,33 +100,3 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
   );
 };
 export default DatePickerComponent;
-
-{
-  /* <label className="block">
-        {label}
-        <DatePicker
-          className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md "
-          {...field}
-          {...props}
-          selected={endDate}
-          onChange={(date) => setEndDate(date)}
-          selectsEnd
-          startDate={startDate}
-          endDate={endDate}
-          minDate={startDate}
-        />
-      </label>
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null} */
-}
-
-// selectsStart
-// startDate={startDate}
-// endDate={endDate}
-
-// end
-// selectsEnd
-// startDate={startDate}
-// endDate={endDate}
-// minDate={startDate}

@@ -1,5 +1,4 @@
-import React from "react";
-import StripeCheckout from "../features/StripeCheckout";
+import StripeCheckout from "../dataAndFeatures/StripeCheckout";
 
 function PaymentPage() {
   return (

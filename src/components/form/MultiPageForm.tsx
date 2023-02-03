@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { toFormikValidationSchema } from "zod-formik-adapter";
-import { CartContext } from "../features/CartContext";
+import { CartContext } from "../dataAndFeatures/CartContext";
 
 import FormFirstStep from "./FormFirstStep";
 import FormSecondStep from "./FormSecondStep";

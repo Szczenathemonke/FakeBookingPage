@@ -1,4 +1,4 @@
-import InputComponent from "../features/InputComponent";
+import InputComponent from "./InputComponent";
 
 const FormSecondStep = () => {
   return (
@@ -13,11 +13,6 @@ const FormSecondStep = () => {
       <InputComponent name="zip" type="text" label="zip-code" />
       <InputComponent name="country" type="text" label="country" />
       <InputComponent name="email" type="email" label="email address" />
-      {/* <InputComponent
-        name="emailConfirm"
-        type="email"
-        label="confirm your email address"
-      /> */}
     </>
   );
 };

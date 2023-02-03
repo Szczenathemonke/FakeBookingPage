@@ -1,5 +1,4 @@
-import React from "react";
-import "../customStyle.css";
+import "./customStyle.css";
 
 function CarouselHomepage() {
   return (

@@ -1,7 +1,7 @@
 import { Form, Formik } from "formik";
-import React from "react";
-import InputComponent from "./features/InputComponent";
+
 import * as Yup from "yup";
+import InputComponent from "../form/InputComponent";
 
 function NewsletterHomepage() {
   return (

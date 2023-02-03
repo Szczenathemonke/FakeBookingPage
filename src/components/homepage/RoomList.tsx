@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import RoomCard from "./RoomCard";
-import { fetchRoomList } from "./CartContext";
+import { fetchRoomList } from "../dataAndFeatures/CartContext";
 
 export type Room = {
   beds: number;
@@ -45,6 +45,3 @@ function RoomList(prop: { page: number }) {
 }
 
 export default RoomList;
-
-//
-// slice(5*({page}-1),5*{page})

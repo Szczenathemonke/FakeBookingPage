@@ -1,7 +1,6 @@
-import { useContext, useState } from "react";
-import { Room } from "./RoomList";
+import { useContext } from "react";
 import { roomImg, petsIco } from "../roomData";
-import { CartContext } from "../features/CartContext";
+import { CartContext } from "../dataAndFeatures/CartContext";
 
 function RoomCard(props: {
   id: number;

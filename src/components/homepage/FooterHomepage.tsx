@@ -1,5 +1,3 @@
-import React from "react";
-
 function FooterHomepage() {
   return (
     <footer className="flex justify-center min-h-[100px] relative bottom-0 bg-gradient-to-br from-emerald-100 to-emerald-400 ">
