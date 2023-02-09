@@ -3,6 +3,7 @@ import { CartContext } from "../dataAndFeatures/CartContext";
 import { useFormikContext } from "formik";
 import { Values } from "./MultiPageForm";
 import RoomCardCheckout from "./RoomCardCheckout";
+import ValuesInSummary from "./ValuesInSummary";
 
 const FormSummary = () => {
   const cart = useContext(CartContext);
@@ -13,40 +14,16 @@ const FormSummary = () => {
       <div className="font-bold">Summary</div>
 
       <div className="flex flex-col items-center gap-2 my-2  bg-emerald-100 rounded-xl p-4">
-        <div className="font-bold">Dane adresowe:</div>
+        <div className="font-bold">Purchase Details:</div>
         <div className="w-1/2">
-          <div className="flex gap-5 justify-between">
-            <span>FirstName: </span>
-            <span>{values.firstName}</span>
-          </div>
-          <div className="flex gap-5 justify-between">
-            <span>LastName: </span>
-            <span>{values.lastName}</span>
-          </div>
-          <div className="flex gap-5 justify-between">
-            <span>address1: </span>
-            <span>{values.address1}</span>
-          </div>
-          <div className="flex gap-5 justify-between">
-            <span>address2: </span>
-            <span>{values.address2}</span>
-          </div>
-          <div className="flex gap-5 justify-between">
-            <span>city: </span>
-            <span>{values.city}</span>
-          </div>
-          <div className="flex gap-5 justify-between">
-            <span>country: </span>
-            <span>{values.country}</span>
-          </div>
-          <div className="flex gap-5 justify-between">
-            <span>email: </span>
-            <span>{values.email}</span>
-          </div>
-          <div className="flex gap-5 justify-between">
-            <span>zip: </span>
-            <span>{values.zip}</span>
-          </div>
+          <ValuesInSummary valueName={"firstName: "} value={values.firstName} />
+          <ValuesInSummary valueName={"lastName: "} value={values.lastName} />
+          <ValuesInSummary valueName={"address1: "} value={values.address1} />
+          <ValuesInSummary valueName={"address2: "} value={values.address2} />
+          <ValuesInSummary valueName={"city: "} value={values.city} />
+          <ValuesInSummary valueName={"country: "} value={values.country} />
+          <ValuesInSummary valueName={"email: "} value={values.email} />
+          <ValuesInSummary valueName={"zip: "} value={values.zip} />
         </div>
       </div>
 
