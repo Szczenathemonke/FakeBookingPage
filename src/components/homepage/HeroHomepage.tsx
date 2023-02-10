@@ -1,4 +1,4 @@
-import "./customStyle.css";
+import "../customStyle.css";
 
 function HeroHomepage() {
   return (

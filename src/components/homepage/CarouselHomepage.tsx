@@ -1,4 +1,4 @@
-import "./customStyle.css";
+import "../customStyle.css";
 
 function CarouselHomepage() {
   return (
@@ -38,3 +38,7 @@ function CarouselHomepage() {
 }
 
 export default CarouselHomepage;
+
+("src/assets/rooms/carousel1.png");
+// carouselPlaces
+// bg-[url('src/assets/rooms/carousel1.png')]

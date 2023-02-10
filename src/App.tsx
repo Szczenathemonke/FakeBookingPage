@@ -9,6 +9,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import CartProvider from "./components/dataAndFeatures/CartContext";
 import StripeCheckout from "./components/dataAndFeatures/StripeCheckout";
 import SuccesfulPayment from "./components/pages/SuccesfulPayment";
+import "./customStyle.css";
 
 const queryClient = new QueryClient();
 
