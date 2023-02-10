@@ -1,78 +1,48 @@
 import { useContext } from "react";
-import { CartContext } from "../features/CartContext";
-import { useField, useFormikContext } from "formik";
-import { Values } from "../MultiPageForm";
-import StripeCheckout from "../features/StripeCheckout";
-import CheckoutComponent from "../features/CheckoutComponent";
+import { CartContext } from "../dataAndFeatures/CartContext";
+import { useFormikContext } from "formik";
+import { Values } from "./MultiPageForm";
+import RoomCardCheckout from "./RoomCardCheckout";
+import ValuesInSummary from "./ValuesInSummary";
 
 const FormSummary = () => {
   const cart = useContext(CartContext);
-  const { values, setFieldValue } = useFormikContext<Values>();
-
-  // const itemCheckInDate = (itemId: number) => {
-  //   return values.reservation
-  //     .find((e) => e.roomId === itemId)
-  //     ?.checkIn.toISOString()
-  //     .slice(0, 10);
-  // };
-
-  // const itemCheckOutDate = (itemId: number) => {
-  //   return values.reservation
-  //     .find((e) => e.roomId === itemId)
-  //     ?.checkOut.toISOString()
-  //     .slice(0, 10);
-  // };
+  const { values } = useFormikContext<Values>();
 
   return (
     <>
-      <div>Summary</div>
+      <div className="font-bold">Summary</div>
 
-      <div className="flex flex-col gap-2 justify-start bg-emerald-100">
-        <div>Dane adresowe:</div>
-        <div>
-          <span>FirstName: </span>
-          {values.firstName}
-        </div>
-        <div>
-          <span>LastName: </span>
-          {values.lastName}
-        </div>
-        <div>
-          <span>address1: </span>
-          {values.address1}
-        </div>
-        <div>
-          <span>address2: </span>
-          {values.address2}
-        </div>
-        <div>
-          <span>city: </span>
-          {values.city}
-        </div>
-        <div>
-          <span>country: </span>
-          {values.country}
-        </div>
-        <div>
-          <span>email: </span>
-          {values.email}
-        </div>
-        <div>
-          <span>zip: </span>
-          {values.zip}
+      <div className="flex flex-col items-center gap-2 my-2  bg-emerald-100 rounded-xl p-4">
+        <div className="font-bold">Purchase Details:</div>
+        <div className="w-1/2">
+          <ValuesInSummary valueName={"firstName: "} value={values.firstName} />
+          <ValuesInSummary valueName={"lastName: "} value={values.lastName} />
+          <ValuesInSummary valueName={"address1: "} value={values.address1} />
+          <ValuesInSummary valueName={"address2: "} value={values.address2} />
+          <ValuesInSummary valueName={"city: "} value={values.city} />
+          <ValuesInSummary valueName={"country: "} value={values.country} />
+          <ValuesInSummary valueName={"email: "} value={values.email} />
+          <ValuesInSummary valueName={"zip: "} value={values.zip} />
         </div>
       </div>
 
       {cart?.items.map((item) => (
-        <div key={item.id}>
-          <span>{item.details.name} </span>
-          <span>od dnia </span>
-          <div>
-            {values.reservation.find((e) => e.room_id === item.id)?.start_date}
-          </div>
-          <span>do dnia </span>
-          <div>
-            {values.reservation.find((e) => e.room_id === item.id)?.end_date}
+        <div className="flex flex-row items-center gap-5 my-2 pr-2 bg-emerald-100 rounded-xl">
+          <RoomCardCheckout name={item.details.name} />
+          <div key={item.id}>
+            <div>{item.details.name} </div>
+            <span>od </span>
+            <span>
+              {
+                values.reservation.find((e) => e.room_id === item.id)
+                  ?.start_date
+              }
+            </span>
+            <span> do </span>
+            <span>
+              {values.reservation.find((e) => e.room_id === item.id)?.end_date}
+            </span>
           </div>
         </div>
       ))}
@@ -81,19 +51,3 @@ const FormSummary = () => {
 };
 
 export default FormSummary;
-
-// formik values:
-// {
-//   reservation: [{ roomId: "", checkIn: "", checkOut: "" }],
-
-//   firstName: "",
-//   lastName: "",
-//   address1: "",
-//   address2: "",
-//   city: "",
-//   zip: "",
-//   country: "",
-//   email: "",
-// }
-
-// values.reservation.find((e) => e.roomId === item.id)

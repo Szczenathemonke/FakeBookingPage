@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import {
   Appearance,
   loadStripe,
@@ -6,9 +6,9 @@ import {
 } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutComponent from "./CheckoutComponent";
-import { CartContext } from "../features/CartContext";
+import { CartContext } from "./CartContext";
 import { useFormikContext } from "formik";
-import { Values } from "../MultiPageForm";
+import { Values } from "../form/MultiPageForm";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export type RoomOrder = {
@@ -73,7 +73,7 @@ function StripeCheckout() {
   const getSecret = useQuery(["getSecret"], fetchSecret);
 
   const appearance: Appearance = {
-    theme: "night",
+    theme: "flat",
   };
   const options: StripeElementsOptions = {
     clientSecret,

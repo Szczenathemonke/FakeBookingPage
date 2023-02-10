@@ -1,9 +1,9 @@
 import { useField, useFormikContext } from "formik";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Values } from "../MultiPageForm";
+import { Values } from "../form/MultiPageForm";
 
 type InputProps = {
   name: string;
@@ -20,11 +20,10 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
 
   const newReservation = {
     room_id: props.roomId,
-    start_date: "",
-    end_date: "",
+    start_date: new Date().toISOString().slice(0, 10),
+    end_date: new Date().toISOString().slice(0, 10),
   };
 
-  console.log(values);
   return (
     <div className="flex flex-row w-64 gap-2  ">
       <label className="block">
@@ -34,6 +33,7 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
           {...field}
           {...props}
           selected={startDate}
+          minDate={startDate}
           onChange={(date) => {
             if (
               values.reservation.find((e) => e.room_id === props.roomId) ===
@@ -100,33 +100,3 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
   );
 };
 export default DatePickerComponent;
-
-{
-  /* <label className="block">
-        {label}
-        <DatePicker
-          className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md "
-          {...field}
-          {...props}
-          selected={endDate}
-          onChange={(date) => setEndDate(date)}
-          selectsEnd
-          startDate={startDate}
-          endDate={endDate}
-          minDate={startDate}
-        />
-      </label>
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null} */
-}
-
-// selectsStart
-// startDate={startDate}
-// endDate={endDate}
-
-// end
-// selectsEnd
-// startDate={startDate}
-// endDate={endDate}
-// minDate={startDate}

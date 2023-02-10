@@ -6,9 +6,9 @@ import BookingHomepage from "./components/pages/BookingHomepage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-import RoomList from "./components/features/RoomList";
-import CartProvider from "./components/features/CartContext";
-import StripeCheckout from "./components/features/StripeCheckout";
+import CartProvider from "./components/dataAndFeatures/CartContext";
+import StripeCheckout from "./components/dataAndFeatures/StripeCheckout";
+import SuccesfulPayment from "./components/pages/SuccesfulPayment";
 
 const queryClient = new QueryClient();
 
@@ -20,12 +20,11 @@ function App() {
           <Routes>
             <Route path="/" element={<BookingHomepage />} />
             <Route path="finalize" element={<FinalizeReservation />} />
-            <Route path="roomList" element={<RoomList />} />
             <Route path="testPayment" element={<StripeCheckout />} />
+            <Route path="SuccesfulPayment" element={<SuccesfulPayment />} />
           </Routes>
         </BrowserRouter>
       </CartProvider>
-      <ReactQueryDevtools />
     </QueryClientProvider>
   );
 }

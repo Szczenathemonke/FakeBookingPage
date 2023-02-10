@@ -1,9 +1,7 @@
 import { createContext, PropsWithChildren, useContext, useState } from "react";
-import { roomImg } from "../roomData";
-
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Room } from "../features/RoomList";
-import { Values } from "../MultiPageForm";
+import { useQuery } from "@tanstack/react-query";
+import { Room } from "../homepage/RoomList";
+import { Values } from "../form/MultiPageForm";
 
 type ContextType = {
   items: {
@@ -38,23 +36,6 @@ export const fetchRoomList = async () => {
 
   return res.json();
 };
-// export function translateShipping(values: Values) {
-//   const roomOrder: RoomOrder = {
-//     rooms_order: [],
-//     address_details: {
-//       email: `${values.email}`,
-//       billing_city: `${values.city}`,
-//       billing_street: `${values.address1}`,
-//       billing_street_add: `${values.address2}`,
-//       billing_postcode: `${values.zip}`,
-//       billing_country: `${values.country}`,
-//     },
-//   };
-//   values.reservation.forEach((e) => roomOrder.rooms_order.push(e));
-//   roomOrder.rooms_order.shift();
-
-//   return roomOrder;
-// }
 
 export const CartContext = createContext<ContextType | null>({
   items: [],
@@ -151,7 +132,6 @@ function CartProvider({ children }: PropsWithChildren<{}>) {
       },
     };
     values.reservation.forEach((e) => roomOrder.rooms_order.push(e));
-    // roomOrder.rooms_order.shift();
 
     return setTranslatedOrder(roomOrder);
   }

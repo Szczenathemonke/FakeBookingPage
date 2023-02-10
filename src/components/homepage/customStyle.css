@@ -8,13 +8,17 @@
 }
 
 .heroImg {
-  background-image: url("./assets/rooms/Place1.png");
+  background-image: url("src/assets/rooms/Place1.png");
   width: 1000px;
   height: 1500px;
 }
 
 .carouselPlaces {
-  background: url("./assets/rooms/carousel1.png");
+  background: url("src/assets/rooms/carousel1.png");
   animation: slide 60s linear infinite;
   width: 5076px;
+}
+
+.homePageHeroBg {
+  background-image: url("src/assets/rooms/hotel-lobby.jpg");
 }

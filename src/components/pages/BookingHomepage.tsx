@@ -1,16 +1,14 @@
-import HeaderHomepage from "../HeaderHomepage";
-import HeroHomepage from "../HeroHomepage";
-import CarouselHomepage from "../CarouselHomepage";
-import RoomsHomepage from "../RoomsHomepage";
-import NewsletterHomepage from "../NewsletterHomepage";
-import FooterHomepage from "../FooterHomepage";
+import HeaderHomepage from "../homepage/HeaderHomepage";
+import HeroHomepage from "../homepage/HeroHomepage";
+import CarouselHomepage from "../homepage/CarouselHomepage";
+import RoomsHomepage from "../homepage/RoomsHomepage";
+import NewsletterHomepage from "../homepage/NewsletterHomepage";
+import FooterHomepage from "../homepage/FooterHomepage";
 
 function BookingHomepage() {
-  // const rooms = { room1: "potega", room2: "remont" };
-
   return (
-    <div className="h-screen max-h-full">
-      <HeaderHomepage />
+    <div className="max-h-full">
+      <HeaderHomepage isCart />
       <HeroHomepage />
       <CarouselHomepage />
       <RoomsHomepage />

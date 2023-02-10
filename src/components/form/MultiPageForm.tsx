@@ -3,12 +3,12 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { toFormikValidationSchema } from "zod-formik-adapter";
-import { CartContext } from "./features/CartContext";
+import { CartContext } from "../dataAndFeatures/CartContext";
 
-import FormFirstStep from "./form/FormFirstStep";
-import FormSecondStep from "./form/FormSecondStep";
-import FormSummary from "./form/FormSummary";
-import FormThirdStep from "./form/FormThirdStep";
+import FormFirstStep from "./FormFirstStep";
+import FormSecondStep from "./FormSecondStep";
+import FormSummary from "./FormSummary";
+import FormThirdStep from "./FormThirdStep";
 
 export type Values = {
   reservation: {
@@ -124,7 +124,7 @@ const MultiPageForm = () => {
                   {page > 0 && (
                     <button
                       type="button"
-                      className="btn btn-primary"
+                      className="btn bg-emerald-500 border-none"
                       onClick={() => setPage((old) => old - 1)}
                     >
                       previous
@@ -137,15 +137,17 @@ const MultiPageForm = () => {
                     <button
                       disabled={!(formProps.isValid && formProps.dirty)}
                       type="button"
-                      className="btn btn-primary"
+                      className="btn bg-emerald-500 border-none"
                       onClick={() => setPage((old) => old + 1)}
                     >
                       next
-                      {/* {page === 3 ? "submit" : "next"} */}
                     </button>
                   )}
                   {page === 3 && (
-                    <button className="btn btn-secondary" type="submit">
+                    <button
+                      className="btn bg-emerald-700 border-none"
+                      type="submit"
+                    >
                       Submit Form
                     </button>
                   )}

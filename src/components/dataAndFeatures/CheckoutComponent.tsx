@@ -4,15 +4,14 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import { StripePaymentElementOptions } from "@stripe/stripe-js";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import HeaderHomepage from "../homepage/HeaderHomepage";
 
 function CheckoutComponent() {
   const stripe = useStripe();
   const elements = useElements();
   const [message, setMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const queryClient = useQueryClient();
 
   useEffect(() => {
     if (!stripe) {
@@ -53,8 +52,6 @@ function CheckoutComponent() {
     e.preventDefault();
 
     if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
 
@@ -63,15 +60,10 @@ function CheckoutComponent() {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "http://127.0.0.1:5174",
+        return_url: "http://127.0.0.1:5173/succesfulPayment",
       },
     });
 
-    // This point will only be reached if there is an immediate error when
-    // confirming the payment. Otherwise, your customer will be redirected to
-    // your `return_url`. For some payment methods like iDEAL, your customer will
-    // be redirected to an intermediate site first to authorize the payment, then
-    // redirected to the `return_url`.
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(`${error.message}`);
     } else {
@@ -82,14 +74,38 @@ function CheckoutComponent() {
   };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
-      <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <button disabled={isLoading || !stripe || !elements} id="submit">
-        <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
-        </span>
-      </button>
-    </form>
+    <>
+      <div className="min-h-screen max-h-full pb-10 bg-gradient-to-br from-emerald-100 to-emerald-300">
+        <HeaderHomepage isCart={false} />
+        <div className="flex flex-row m-10 items-center justify-center ">
+          <form
+            id="payment-form"
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-4 items-stretch"
+          >
+            <div>
+              <PaymentElement
+                id="payment-element"
+                options={paymentElementOptions}
+              />
+            </div>
+            <button
+              disabled={isLoading || !stripe || !elements}
+              id="submit"
+              className="btn bg-emerald-500 border-none rounded-lg"
+            >
+              <span id="button-text">
+                {isLoading ? (
+                  <div className="spinner" id="spinner"></div>
+                ) : (
+                  "Pay now"
+                )}
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </>
   );
 }
 

@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import RoomCard from "./RoomCard";
-import { fetchRoomList } from "./CartContext";
+import { fetchRoomList } from "../dataAndFeatures/CartContext";
 
 export type Room = {
   beds: number;
@@ -11,7 +11,7 @@ export type Room = {
   price_in_cents: number;
 };
 
-function RoomList() {
+function RoomList(prop: { page: number }) {
   const queryClient = useQueryClient();
 
   const { isLoading, isError, data, error } = useQuery(
@@ -28,20 +28,20 @@ function RoomList() {
   console.log(data);
   return (
     <>
-      {data.rooms.map((room: Room) => (
-        <RoomCard
-          key={room.id}
-          id={room.id}
-          name={room.name}
-          beds={room.beds}
-          pets={room.pets_allowed}
-          price={room.price_in_cents}
-        />
-      ))}
+      {data.rooms
+        .slice(5 * (prop.page - 1), 5 * prop.page)
+        .map((room: Room) => (
+          <RoomCard
+            key={room.id}
+            id={room.id}
+            name={room.name}
+            beds={room.beds}
+            pets={room.pets_allowed}
+            price={room.price_in_cents}
+          />
+        ))}
     </>
   );
 }
 
 export default RoomList;
-
-//
