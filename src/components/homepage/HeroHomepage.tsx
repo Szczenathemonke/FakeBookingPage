@@ -1,9 +1,7 @@
-import "../customStyle.css";
-
 function HeroHomepage() {
   return (
     <>
-      <div className="bg-emerald-100 homePageHeroBg">
+      <div className="bg-emerald-100 bg-[url('src/assets/rooms/hotel-lobby.jpg')]">
         <div className="hero min-h-full bg-hero-pattern ">
           <div className="hero-overlay bg-opacity-80"></div>
           <div className="hero-content min-h-[400px] text-center text-natural-content text-white">

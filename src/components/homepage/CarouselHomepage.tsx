@@ -1,5 +1,3 @@
-import "../customStyle.css";
-
 function CarouselHomepage() {
   return (
     <div className="bg-gradient-to-br from-emerald-100 to-emerald-400 ">
@@ -29,7 +27,13 @@ function CarouselHomepage() {
             </div>
           </div>
         </div>
-        <div className="hero h-[200px] carouselPlaces ">
+        <div
+          className="hero h-[200px] animate-carouselAnimation"
+          style={{
+            background: "url('src/assets/rooms/carousel1.png')",
+            width: "5076px",
+          }}
+        >
           <div className="hero-overlay bg-opacity-70">.</div>
         </div>
       </div>
@@ -38,7 +42,3 @@ function CarouselHomepage() {
 }
 
 export default CarouselHomepage;
-
-("src/assets/rooms/carousel1.png");
-// carouselPlaces
-// bg-[url('src/assets/rooms/carousel1.png')]
