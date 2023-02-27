@@ -1,7 +1,6 @@
-import { displayValue } from "@tanstack/react-query-devtools/build/lib/utils";
 import ShoppingCartDropdown from "./ShoppingCartDropdown";
 
-function HeaderHomepage(props: { isCart: boolean }) {
+function Header(props: { isCart: boolean }) {
   return (
     <>
       <header className="navbar top-0 sticky z-20 h-[60px] bg-emerald-300 shadow-md">
@@ -15,11 +14,11 @@ function HeaderHomepage(props: { isCart: boolean }) {
             <ShoppingCartDropdown />
           </div>
         ) : (
-          <div></div>
+          <div />
         )}
       </header>
     </>
   );
 }
 
-export default HeaderHomepage;
+export default Header;

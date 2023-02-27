@@ -1,4 +1,4 @@
-function FooterHomepage() {
+function Footer() {
   return (
     <footer className="flex justify-center min-h-[100px] relative bottom-0 bg-gradient-to-br from-emerald-100 to-emerald-400 ">
       <div className="flex justify-between items-center p-10 gap-5 lg:w-1/2">
@@ -24,4 +24,4 @@ function FooterHomepage() {
   );
 }
 
-export default FooterHomepage;
+export default Footer;

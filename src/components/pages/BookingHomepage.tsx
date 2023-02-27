@@ -1,21 +1,21 @@
-import HeaderHomepage from "../homepage/HeaderHomepage";
-import HeroHomepage from "../homepage/HeroHomepage";
-import CarouselHomepage from "../homepage/CarouselHomepage";
-import RoomsHomepage from "../homepage/RoomsHomepage";
-import NewsletterHomepage from "../homepage/NewsletterHomepage";
-import FooterHomepage from "../homepage/FooterHomepage";
+import Header from "../homepage/Header";
+import HeroSection from "../homepage/HeroSection";
+import Carousel from "../homepage/Carousel";
+import Rooms from "../homepage/Rooms";
+import Newsletter from "../homepage/Newsletter";
+import Footer from "../homepage/Footer";
 
-function BookingHomepage() {
+function Booking() {
   return (
     <div className="max-h-full">
-      <HeaderHomepage isCart />
-      <HeroHomepage />
-      <CarouselHomepage />
-      <RoomsHomepage />
-      <NewsletterHomepage />
-      <FooterHomepage />
+      <Header isCart />
+      <HeroSection />
+      <Carousel />
+      <Rooms />
+      <Newsletter />
+      <Footer />
     </div>
   );
 }
 
-export default BookingHomepage;
+export default Booking;

@@ -3,7 +3,7 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import InputComponent from "../form/InputComponent";
 
-function NewsletterHomepage() {
+function Newsletter() {
   return (
     <div className="h-[260px] bg-emerald-500 flex justify-center items-center">
       <div className="flex flex-col gap-4 items-center">
@@ -41,4 +41,4 @@ function NewsletterHomepage() {
   );
 }
 
-export default NewsletterHomepage;
+export default Newsletter;

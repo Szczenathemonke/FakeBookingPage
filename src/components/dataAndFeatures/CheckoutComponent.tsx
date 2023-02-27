@@ -5,7 +5,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { StripePaymentElementOptions } from "@stripe/stripe-js";
 import { useEffect, useState } from "react";
-import HeaderHomepage from "../homepage/HeaderHomepage";
+import HeaderHomepage from "../homepage/Header";
 
 function CheckoutComponent() {
   const stripe = useStripe();

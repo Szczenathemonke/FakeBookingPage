@@ -2,7 +2,7 @@ import { createContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import RoomList from "./RoomList";
 
-function RoomsHomepage() {
+function Rooms() {
   const [page, setPage] = useState<number>(1);
   return (
     <div className="flex flex-col items-center min-h-full bg-gradient-to-br from-emerald-100 to-emerald-300 ">
@@ -33,6 +33,6 @@ function RoomsHomepage() {
   );
 }
 
-export default RoomsHomepage;
+export default Rooms;
 
 // bg-gradient-to-br from-emerald-100 to-emerald-500
