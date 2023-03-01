@@ -1,20 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../dataAndFeatures/CartContext";
+import { indicator } from "../roomData";
 
 function ShoppingCartDropdown() {
   const cart = useContext(CartContext);
-  // const [cartIndicator, setCartIndicator] = useState<number>(0);
   const navigate = useNavigate();
 
   const cartIndicator = cart?.items?.length ?? 0;
-
-  // useEffect(() => {
-  //   if (!cart?.items.length) {
-  //     return;
-  //   }
-  //   return setCartIndicator(cart?.items.length);
-  // }, [cart]);
 
   const itemsInCart = cart?.items;
   return (
@@ -22,7 +15,7 @@ function ShoppingCartDropdown() {
       <div tabIndex={0} className="dropdown dropdown-end ">
         <label tabIndex={0} className="btn btn-ghost btn-circle">
           <div className="indicator">
-            <img src="src/assets/icons/indicator.svg" alt="" />
+            <img src={indicator} alt="" />
             <span className="badge badge-sm indicator-item">
               {cartIndicator}
             </span>

@@ -10,6 +10,9 @@ import place9 from "../assets/rooms/place9.jpg";
 
 import petsEmerald100 from "../assets/icons/petsEmerald100.svg";
 import petsGrey from "../assets/icons/petsGrey.svg";
+import indicator from "../assets/icons/indicator.svg";
+import carousel from "../assets/rooms/carousel.png";
+import heroBg from "../assets/rooms/hotel-lobby.jpg";
 
 const roomImg = [
   {
@@ -92,4 +95,4 @@ function getProductData(id: number) {
 
   return productData;
 }
-export { roomImg, petsIco, getProductData };
+export { roomImg, petsIco, getProductData, indicator, heroBg };

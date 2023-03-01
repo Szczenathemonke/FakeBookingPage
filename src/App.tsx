@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BookingHomepage from "./components/pages/BookingHomepage";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import CartProvider from "./components/dataAndFeatures/CartContext";
 import StripeCheckout from "./components/dataAndFeatures/StripeCheckout";
