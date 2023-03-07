@@ -8,10 +8,11 @@
 }
 
 .heroSectionBg {
-  background-image: url("src/assets/rooms/hotel-lobby.jpg");
+  background-image: url("../assets/rooms/hotel-lobby.jpg");
 }
 .carouselBg {
-  background: url("src/assets/rooms/carousel1.png");
+  /* background-image: url("../assets/rooms/carousel1.png"); */
+  background: url("../assets/rooms/carousel1.png");
   width: 5076px;
   animation: slide 60s linear infinite;
 }

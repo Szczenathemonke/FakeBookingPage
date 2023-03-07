@@ -1,8 +1,7 @@
-import "../customStyle.css";
 function HeroSection() {
   return (
     <>
-      <div className="bg-emerald-100 heroSectionBg">
+      <div className="bg-emerald-100 bg-landing">
         <div className="hero min-h-full bg-hero-pattern ">
           <div className="hero-overlay bg-opacity-80"></div>
           <div className="hero-content min-h-[400px] text-center text-natural-content text-white">

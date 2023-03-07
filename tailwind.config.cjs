@@ -17,6 +17,9 @@ module.exports = {
       animation: {
         carouselAnimation: "slide 60s linear infinite",
       },
+      backgroundImage: {
+        landing: "url('src/assets/rooms/hotel-lobby.jpg')",
+      },
     },
   },
   plugins: [require("daisyui")],

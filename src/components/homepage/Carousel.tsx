@@ -29,7 +29,7 @@ function Carousel() {
             </div>
           </div>
         </div>
-        <div className="hero h-[200px] animate-carouselAnimation carouselBg">
+        <div className="hero h-[200px] carouselBg">
           <div className="hero-overlay bg-opacity-70">.</div>
         </div>
       </div>
@@ -38,3 +38,4 @@ function Carousel() {
 }
 
 export default Carousel;
+// animate-carouselAnimation
