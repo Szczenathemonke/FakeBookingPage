@@ -38,4 +38,3 @@ function Carousel() {
 }
 
 export default Carousel;
-// animate-carouselAnimation
