@@ -60,7 +60,7 @@ function CheckoutComponent() {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "http://127.0.0.1:5173/succesfulPayment",
+        return_url: import.meta.env.VITE_SUCCESFUL_URL,
       },
     });
 
