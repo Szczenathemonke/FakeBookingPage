@@ -27,37 +27,36 @@ export type Values = {
   email: string;
 };
 
-// form level validation poniżej -> problem z walidacją podczas przechodzenia przyciskami -> przyciski działają cały czas
-const zodValidationStep1 = z.object({
-  // reservations: z.array(
-  //   z.object({
-  //     roomID: z.number(),
-  //     checkIn: z.date({ required_error: "Required Field!" }),
-  //     checkOut: z.date({ required_error: "Required Field!" }),
-  //   })
-  // ),
-  // checkIn: z.date({ required_error: "Required Field!" })
-  // checkOut: z.date({ required_error: "Required Field!" }),
-});
-const zodValidationStep2 = z.object({
-  firstName: z.string({ required_error: "Required Field!" }).max(15).min(1),
-  lastName: z.string({ required_error: "Required Field!" }).max(15).min(1),
-  address1: z.string({ required_error: "Required Field!" }).min(1),
-  address2: z.string(),
-  city: z.string({ required_error: "Required Field!" }),
-  zip: z.string(),
-  country: z.string(),
-  email: z
-    .string({ required_error: "Required Field!" })
-    .min(1)
-    .email({ message: "Invalid email address" }),
-});
-const zodValidationStep3 = z.object({});
-
 const MultiPageForm = () => {
   const [page, setPage] = useState(0);
   const order = useContext(CartContext);
   const navigate = useNavigate();
+
+  const reservedRoomArray: number =
+    order?.items?.length !== undefined ? order.items.length + 1 : 1;
+
+  const zodValidationStep1 = z
+    .object({
+      room_id: z.number(),
+      start_date: z.string().length(10),
+      end_date: z.string().length(10),
+    })
+    .array()
+    .length(reservedRoomArray);
+  const zodValidationStep2 = z.object({
+    firstName: z.string({ required_error: "Required Field!" }).max(15).min(1),
+    lastName: z.string({ required_error: "Required Field!" }).max(15).min(1),
+    address1: z.string({ required_error: "Required Field!" }).min(1),
+    address2: z.string(),
+    city: z.string({ required_error: "Required Field!" }),
+    zip: z.string(),
+    country: z.string(),
+    email: z
+      .string({ required_error: "Required Field!" })
+      .min(1)
+      .email({ message: "Invalid email address" }),
+  });
+  const zodValidationStep3 = z.object({});
 
   const formSwitch = (page: number) => {
     switch (page) {

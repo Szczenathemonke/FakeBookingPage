@@ -25,25 +25,6 @@ export type RoomOrder = {
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PKEY);
 
-export function translateShipping() {
-  const { values } = useFormikContext<Values>();
-  const roomOrder: RoomOrder = {
-    rooms_order: [],
-    address_details: {
-      email: `${values.email}`,
-      billing_city: `${values.city}`,
-      billing_street: `${values.address1}`,
-      billing_street_add: `${values.address2}`,
-      billing_postcode: `${values.zip}`,
-      billing_country: `${values.country}`,
-    },
-  };
-  values.reservation.forEach((e) => roomOrder.rooms_order.push(e));
-  roomOrder.rooms_order.shift();
-
-  return roomOrder;
-}
-
 function StripeCheckout() {
   const [clientSecret, setClientSecret] = useState("");
   const [orderId, setOrderId] = useState<number | null>(null);

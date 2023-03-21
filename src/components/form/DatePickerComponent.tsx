@@ -14,8 +14,9 @@ type InputProps = {
 
 const DatePickerComponent = ({ ...props }: InputProps) => {
   const { values, setFieldValue } = useFormikContext<Values>();
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
-  const [endDate, setEndDate] = useState<Date | null>(new Date());
+  const minDate = new Date();
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [endDate, setEndDate] = useState<Date | null>(null);
   const [field, meta] = useField(props);
 
   const newReservation = {
@@ -33,7 +34,7 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
           {...field}
           {...props}
           selected={startDate}
-          minDate={startDate}
+          minDate={minDate}
           onChange={(date) => {
             if (
               values.reservation.find((e) => e.room_id === props.roomId) ===
@@ -89,7 +90,7 @@ const DatePickerComponent = ({ ...props }: InputProps) => {
           selectsEnd
           startDate={startDate}
           endDate={endDate}
-          minDate={startDate}
+          minDate={minDate}
           shouldCloseOnSelect={true}
         />
       </label>
