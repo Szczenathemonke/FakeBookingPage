@@ -10,6 +10,9 @@
 .heroSectionBg {
   background-image: url("../assets/rooms/hotel-lobby.jpg");
 }
+.heroNewBg {
+  background-image: url("../assets/hero1.png");
+}
 .carouselBg {
   background: url("../assets/rooms/carousel1.png");
   width: 5076px;
